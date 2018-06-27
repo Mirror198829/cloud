@@ -1,6 +1,6 @@
 <!-- 
 - Author:CaoJing
-- Date:2018/6/20
+- Date:2018/6/27
 - github:https://github.com/Mirror198829
 -->
 <template>
@@ -70,7 +70,7 @@ export default {
 .loginMainWrap{padding:40px;padding-left: 20px !important;padding-right: 20px !important;box-sizing: border-box;}
 .subIntroduce{color:#fff;line-height: 2;}
 .loginLeftSide{margin-top:100px;}
-.loginLeftSide>h1{color:#fff;}
+.loginLeftSide>h1{color:#fff;margin-bottom:15px;}
 </style>
 <style>
 #main .rowBlock.el-row{display: table-cell;vertical-align:middle;}
