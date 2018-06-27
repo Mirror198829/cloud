@@ -33,7 +33,7 @@ axios.interceptors.response.use(
 })
 router.beforeEach((to, from, next) => {
     if (to.meta.title) {
-        document.title = to.meta.title
+        document.title = '阿里云 - '+to.meta.title
     }
     next()
 })

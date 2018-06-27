@@ -2,6 +2,7 @@
   <div id="homePage">
     <menu-header></menu-header>
     <!-- <menu-footer></menu-footer> -->
+    12123123132
   </div>
 </template>
 

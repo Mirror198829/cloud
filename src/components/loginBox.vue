@@ -1,6 +1,6 @@
 <!-- 
 - Author:CaoJing
-- Date:2018/6/26
+- Date:2018/6/27
 - github:https://github.com/Mirror198829
 -->
 <template>
@@ -11,13 +11,13 @@
       <span class="errorMsg">{{errorMsg}}</span>
       <el-form ref="loginForm" :model="loginForm">
         <el-form-item prop="username">
-          <el-input v-model="loginForm.username" placeholder="请输入用户名" @blur="verifyLogin"></el-input>
+          <el-input v-model="loginForm.username" placeholder="请输入用户名"></el-input>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input type="password" v-model="loginForm.password" placeholder="请输入密码"  @blur="verifyLogin"></el-input>
+          <el-input type="password" v-model="loginForm.password" placeholder="请输入密码"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" style="width:100%" @click="verifyLogin">立即登陆</el-button>
+          <el-button type="primary" style="width:100%" @click="verifyLogin" :loading="isLoading">立即登陆</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -28,6 +28,7 @@ export default {
   name: 'loginBox',
   data () {
     return {
+      isLoading:false,
       errorMsg:'',
       loginForm:{
         username:'',
@@ -36,9 +37,6 @@ export default {
     }
   },
   methods:{
-    cancleVerify(){
-      this.errorMsg = ''
-    },
     verifyLogin(){
         this.errorMsg = ''
         if(this.loginForm.username == '' && this.loginForm.password == ''){
@@ -47,18 +45,26 @@ export default {
           this.errorMsg = '用户名不得为空'
         }else if(this.loginForm.password == ''){
           this.errorMsg = '密码不得为空'
+        }else{
+          this.login()
         }
      },
     login(){
         let name = this.loginForm.username
         let password = this.loginForm.password
+        this.isLoading = true
         this.$http.get('http://yapi.demo.qunar.com/mock/12097/login',{
-          params:{
+        params:{
             name,
             password
         }}).then(res => {
-            console.log(res)      
-        }).catch(error => {})
+            let username = res.data.name
+            sessionStorage.setItem("username",username)
+            this.$router.push('Home')  
+            this.isLoading = false
+        }).catch(error => {
+            this.isLoading = false
+        })
       }
   },
   mounted(){},

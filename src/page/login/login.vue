@@ -59,18 +59,19 @@ export default {
 }
 </script>
 
-<style scoped>
-#loginTopbar{height: 60px;background-color:#373d41;position: relative;box-sizing: border-box;}
+<style scoped lang="less">
+@import '../../less/index.less';
+#loginTopbar{height: 60px;background-color:@theme-color;position: relative;box-sizing: border-box;}
 #loginLogo{position: absolute;left:20px;top:15px;}
-#homeLink{color:#fff;position: absolute;right: 0;top:18px;cursor: pointer;padding:0 20px;}
-#loginFooter{height:80px;background-color: #373d41}
+#homeLink{color:@font-white;position: absolute;right: 0;top:18px;cursor: pointer;padding:0 20px;}
+#loginFooter{height:80px;background-color: @theme-color;}
 #main{height:calc(100vh - 140px);position: relative;background-image: url('../../assets/login/bg.jpg');display: table;width:100%;background-size: 100% 100%}
 .footerItem{color:#9b9ea0;float:left;padding:0 17px;font-size:16px;position: relative;top:30px;}
 .footerItemXs{color:#9b9ea0;font-size:12px;padding:2px 15px;}
 .loginMainWrap{padding:40px;padding-left: 20px !important;padding-right: 20px !important;box-sizing: border-box;}
-.subIntroduce{color:#fff;line-height: 2;}
+.subIntroduce{color:@font-white;line-height: 2;}
 .loginLeftSide{margin-top:100px;}
-.loginLeftSide>h1{color:#fff;margin-bottom:15px;}
+.loginLeftSide>h1{color:@font-white;margin-bottom:15px;}
 </style>
 <style>
 #main .rowBlock.el-row{display: table-cell;vertical-align:middle;}
