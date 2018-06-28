@@ -23,3 +23,4 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 ## 项目功能
 * 响应式布局
 * less
+* 国际化
