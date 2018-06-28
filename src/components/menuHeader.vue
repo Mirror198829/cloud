@@ -1,8 +1,6 @@
 <template>
   <div>
-    <button @click="switchLang">中文切换</button>
     <header id="header" class="clearfix">
-      <p style="color:#fff">{{$t('message.hello')}}</p>
       <i class="headerIcon fa fa-align-justify"></i>
       <div class="headerLogo">
     	   <img id="loginLogo" src="../assets/logo.png" height="20" width="100">
@@ -14,8 +12,7 @@
       </ul>
       <ul style="float:right;color:#fff" class="clearfix">
         <li>
-          <a>中文/英文</a>
-        </li>
+          <lang-switch></lang-switch>
         <li>
           <a>控制台</a>
         </li>
@@ -28,8 +25,12 @@
 </template>
 
 <script>
+import langSwitch from '@/components/langSwitch.vue'
 export default {
   name: 'menuHeader',
+  components:{
+    langSwitch
+  },
   data () {
     return {
       value1:'',
@@ -47,15 +48,7 @@ export default {
       ]
     }
   },
-  methods:{
-    switchLang(){
-      if(this.$i18n.locale == 'cn'){
-        this.$i18n.locale = 'en'
-      }else{
-        this.$i18n.locale = 'cn'
-      }
-    }
-  }
+  methods:{}
 }
 </script>
 
