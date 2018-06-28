@@ -6,6 +6,7 @@ import router from './router'
 import ElementUI from 'element-ui'
 import axios from 'axios'
 import NProgress from 'nprogress'
+import i18n from './i18n/i18n.js'
 
 import 'nprogress/nprogress.css'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -43,6 +44,7 @@ Vue.prototype.$http = axios
 new Vue({
   el: '#app',
   router,
+  i18n,
   components: { App },
   template: '<App/>'
 })

@@ -5,18 +5,21 @@
 -->
 <template>
 	<div id="loginPage">
-		<div id="loginTopbar">
+		<div id="loginTopbar" class="clearfix">
 			<img id="loginLogo" src="../../assets/logo.png" height="24" width="103">
-			<span id="homeLink">首页</span>
+			<span id="homeLink">{{$t('message.home')}}</span>
+			<div id="switchLang">
+				<lang-switch></lang-switch>
+			</div>
 		</div>
 		<div id="main">
 			 <el-row class="rowBlock">
 					<el-col :lg="{span:8,offset:4}" :xl="{span:7,offset:5}" class="hidden-md-and-down">
 						<div class="loginLeftSide">
-							<h1>数字化转型专家</h1>
-							<p class="subIntroduce">融合AI突破性技术，解决社会和商业棘手问题</p>
-							<p class="subIntroduce">提供ET大脑帮助您在复杂局面下，做出最大决策</p>
-							<p class="subIntroduce">现已广泛应用于工业、城市、医疗、交通等多个行业</p>
+							<h1>{{$t('message.loginTitle')}}</h1>
+							<p class="subIntroduce">{{$t('message.loginMsg1')}}</p>
+							<p class="subIntroduce">{{$t('message.loginMsg2')}}</p>
+							<p class="subIntroduce">{{$t('message.loginMsg3')}}</p>
 						</div>
 					</el-col>
 					<el-col :xs="{span:22,offset:1}" :sm="{span:12,offset:6}" :md="{span:12,offset:6}" :lg="{span:8,offset:0}" :xl="{span:7,offset:0}" class="loginMainWrap">
@@ -43,10 +46,12 @@
 
 <script>
 import loginBox from '@/components/loginBox'
+import langSwitch from  '@/components/langSwitch'
 export default {
 	name: 'login',
 	components : {
-		loginBox
+		loginBox,
+		langSwitch
 	},
 	data () {
 		return {
@@ -61,17 +66,23 @@ export default {
 
 <style scoped lang="less">
 @import '../../less/index.less';
-#loginTopbar{height: 60px;background-color:@theme-color;position: relative;box-sizing: border-box;}
+@topBarHeight:60px;
+#loginTopbar{height: @topBarHeight;background-color:@base-color;position: relative;box-sizing: border-box;}
 #loginLogo{position: absolute;left:20px;top:15px;}
-#homeLink{color:@font-white;position: absolute;right: 0;top:18px;cursor: pointer;padding:0 20px;}
-#loginFooter{height:80px;background-color: @theme-color;}
+#homeLink{color:@font-white;position: relative;float:right;top:0;cursor: pointer;padding:0 20px;height:@topBarHeight;line-height:@topBarHeight;}
+#switchLang{float:right;position:relative;top:0px;height:@topBarHeight;line-height:@topBarHeight;}
+#loginFooter{height:80px;background-color: @base-color;}
 #main{height:calc(100vh - 140px);position: relative;background-image: url('../../assets/login/bg.jpg');display: table;width:100%;background-size: 100% 100%}
 .footerItem{color:#9b9ea0;float:left;padding:0 17px;font-size:16px;position: relative;top:30px;}
 .footerItemXs{color:#9b9ea0;font-size:12px;padding:2px 15px;}
 .loginMainWrap{padding:40px;padding-left: 20px !important;padding-right: 20px !important;box-sizing: border-box;}
 .subIntroduce{color:@font-white;line-height: 2;}
-.loginLeftSide{margin-top:100px;}
-.loginLeftSide>h1{color:@font-white;margin-bottom:15px;}
+.loginLeftSide{
+	margin-top:100px;
+	h1{
+		color:@font-white;margin-bottom:15px;	
+	}
+}
 </style>
 <style>
 #main .rowBlock.el-row{display: table-cell;vertical-align:middle;}

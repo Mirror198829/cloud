@@ -2,7 +2,7 @@
   <div id="homePage">
     <menu-header></menu-header>
     <!-- <menu-footer></menu-footer> -->
-    12123123132
+    <div style="height:1000px;background-color:#333"></div>
   </div>
 </template>
 

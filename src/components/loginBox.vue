@@ -17,7 +17,7 @@
           <el-input type="password" v-model="loginForm.password" placeholder="请输入密码"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" style="width:100%" @click="verifyLogin" :loading="isLoading">立即登陆</el-button>
+          <el-button class="loginBtn" type="primary" style="width:100%" @click="verifyLogin" :loading="isLoading">{{$t('message.loginBtn')}}</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -72,9 +72,11 @@ export default {
 }
 </script>
 
-<style scoped>
-.loginMain{position:relative;box-sizing: border-box;background-color: #fff;padding:90px 20px 70px;border-radius: 2px;}
-.loginCircle{width:80px;height:80px;background-color:#409EFF;border-radius: 100%;position: absolute;left:50%;top:0;transform: translate(-50%,-50%);text-align: center;}
+<style scoped lang="less">
+@import '../less/index.less';
+.loginMain{position:relative;box-sizing: border-box;background-color: #fff;padding:90px 20px 50px;border-radius: 2px;}
+.loginCircle{width:80px;height:80px;background-color:@theme-color;border-radius: 100%;position: absolute;left:50%;top:0;transform: translate(-50%,-50%);text-align: center;}
 .loginIcon{color:#fff;font-size:70px;position: relative;top:4px;}
 .errorMsg{color:red;position: absolute;top:70px;font-size:13px;}
+.loginBtn{background-color:@theme-color;border-color:@theme-color;margin-top:20px;}
 </style>
