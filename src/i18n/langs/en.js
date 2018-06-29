@@ -10,7 +10,8 @@ const en = {
 		'loginMsg3':'It has been widely used in many industries',
 		'aboutus':'About Us',
 		'hello':'hello',
-		'msg':'hello'
+		'msg':'hello',
+		'nav':'{nav}'
 	},
 	...enLocale
 }

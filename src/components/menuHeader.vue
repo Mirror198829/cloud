@@ -3,11 +3,13 @@
     <header id="header" class="clearfix">
       <i class="headerIcon fa fa-align-justify"></i>
       <div class="headerLogo">
-    	   <img id="loginLogo" src="../assets/logo.png" height="20" width="100">
+    	   <img class="loginCnLogo" src="../assets/logo.png" height="20" width="100" v-if="$i18n.locale == 'cn'">
+         <img class="loginEnLogo" src="../assets/enlogo.png" height="60" width="140" v-if="$i18n.locale == 'en'">
       </div>
       <ul style="float:left;" class="clearfix">
         <li v-for="(item,index) in navLst" class="navItem">
-          <a href="#">{{item.title}}</a>
+          <a href="#" v-if="$i18n.locale == 'cn'">{{$t('message.nav',{'nav':item.cnTitle})}}</a>
+          <a href="#" v-if="$i18n.locale == 'en'">{{$t('message.nav',{'nav':item.enTitle})}}</a>
         </li>
       </ul>
       <ul style="float:right;color:#fff" class="clearfix">
@@ -36,15 +38,15 @@ export default {
       value1:'',
       activeIndex:"",
       navLst:[
-        {title:'产品'},
-        {title:'解决方案'},
-        {title:'定价'},
-        {title:'ET大脑'},
-        {title:'数据智能'},
-        {title:'安全'},
-        {title:'云市场'},
-        {title:'支持与服务'},
-        {title:'合作伙伴'}
+        {cnTitle:'产品',enTitle:'Product'},
+        {cnTitle:'解决方案',enTitle:'Solution'},
+        {cnTitle:'定价',enTitle:'Price'},
+        {cnTitle:'ET大脑',enTitle:'ET Brain'},
+        {cnTitle:'数据智能',enTitle:'Data Intelligent'},
+        {cnTitle:'安全',enTitle:'Safe'},
+        {cnTitle:'云市场',enTitle:'Cloud Market'},
+        {cnTitle:'支持与服务',enTitle:'Support&Service'},
+        {cnTitle:'合作伙伴',enTitle:'Cooperate'}
       ]
     }
   },
@@ -54,15 +56,16 @@ export default {
 
 <style scoped lang="less">
 @import '../less/index.less';
-@header-height:50px;
+@header-height:60px;
 #header{height: @header-height;background-color:@base-color;}
-#loginLogo{}
+.loginCnLogo{position:relative;top:4px;}
+.loginEnLogo{position:relative;top:-16px;}
 .navItem{
     float:left;
-    a{text-decoration: none;display:block;color:@font-white;padding:0 16px;height:@header-height;line-height:@header-height;box-sizing:border-box;font-size:12px;transition:all .5s;}
+    a{text-decoration: none;display:block;color:@font-white;padding:0 16px;height:@header-height;line-height:@header-height;box-sizing:border-box;font-size:13px;transition:all .5s;}
 }
 .navItem>a:hover{border-bottom:3px solid @theme-color;color:@theme-color;cursor:pointer;}
-.headerIcon{color:#999999;font-size:18px;float:left;position:relative;top:17px;margin-left:20px;transition:all .3s;cursor: pointer;}
+.headerIcon{color:#999999;font-size:18px;float:left;position:relative;top:21px;margin-left:20px;transition:all .3s;cursor: pointer;}
 .headerIcon:hover{transform:rotate(90deg);}
-.headerLogo{float:left;width:103px;position:relative;top:15px;margin:0 5px 0 30px;}
+.headerLogo{float:left;position:relative;top:15px;margin:0 5px 0 30px;}
 </style>

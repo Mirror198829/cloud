@@ -6,7 +6,8 @@
 <template>
 	<div id="loginPage">
 		<div id="loginTopbar" class="clearfix">
-			<img id="loginLogo" src="../../assets/logo.png" height="24" width="103">
+			<img class="loginCnLogo" src="../../assets/logo.png" height="24" width="103" v-if="$i18n.locale == 'cn'">
+			<img class="loginEnLogo" src="../../assets/enlogo.png" height="60" width="140" v-if="$i18n.locale == 'en'">
 			<span id="homeLink">{{$t('message.home')}}</span>
 			<div id="switchLang">
 				<lang-switch></lang-switch>
@@ -68,11 +69,12 @@ export default {
 @import '../../less/index.less';
 @topBarHeight:60px;
 #loginTopbar{height: @topBarHeight;background-color:@base-color;position: relative;box-sizing: border-box;}
-#loginLogo{position: absolute;left:20px;top:15px;}
+.loginCnLogo{position: absolute;left:20px;top:15px;}
+.loginEnLogo{position: absolute;left:20px;}
 #homeLink{color:@font-white;position: relative;float:right;top:0;cursor: pointer;padding:0 20px;height:@topBarHeight;line-height:@topBarHeight;}
 #switchLang{float:right;position:relative;top:0px;height:@topBarHeight;line-height:@topBarHeight;}
 #loginFooter{height:80px;background-color: @base-color;}
-#main{height:calc(100vh - 140px);position: relative;background-image: url('../../assets/login/bg.jpg');display: table;width:100%;background-size: 100% 100%}
+#main{height:calc(100vh - 140px);position: relative;background-image: url('../../assets/login/bg.jpg');display: table;width:100%;background-size: 100% 100%;background-color:#1e2225}
 .footerItem{color:#9b9ea0;float:left;padding:0 17px;font-size:16px;position: relative;top:30px;}
 .footerItemXs{color:#9b9ea0;font-size:12px;padding:2px 15px;}
 .loginMainWrap{padding:40px;padding-left: 20px !important;padding-right: 20px !important;box-sizing: border-box;}

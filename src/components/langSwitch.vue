@@ -16,9 +16,7 @@
 export default {
   name: 'langSwitch',
   data () {
-    return {
-      
-    }
+    return {}
   },
   methods:{
     switchLang(){

@@ -10,7 +10,8 @@ const cn = {
 		'loginMsg3':'现已广泛应用于工业、城市、医疗、交通等多个行业',
 		'aboutus':'关于我们',
 		'hello':'你好',
-		'msg':'提示'
+		'msg':'提示',
+		'nav':'{nav}'
 	},
 	...zhLocale
 }
