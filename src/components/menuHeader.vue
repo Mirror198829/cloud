@@ -13,13 +13,13 @@
         </li>
       </ul>
       <ul style="float:right;color:#fff" class="clearfix">
-        <li>
+        <li class="menuHeaderRightItem">
           <lang-switch></lang-switch>
-        <li>
-          <a>控制台</a>
+        <li class="menuHeaderRightItem">
+          <a>{{$t('message.console')}}</a>
         </li>
-        <li>
-          <a>文档</a>
+        <li class="menuHeaderRightItem">
+          <a>{{$t('message.doc')}}</a>
         </li>
       </ul>
     </header>
@@ -62,10 +62,11 @@ export default {
 .loginEnLogo{position:relative;top:-16px;}
 .navItem{
     float:left;
-    a{text-decoration: none;display:block;color:@font-white;padding:0 16px;height:@header-height;line-height:@header-height;box-sizing:border-box;font-size:13px;transition:all .5s;}
+    a{text-decoration: none;display:block;color:@font-white;padding:0 16px;height:@header-height;line-height:@header-height;box-sizing:border-box;font-size:14px;transition:all .5s;}
 }
 .navItem>a:hover{border-bottom:3px solid @theme-color;color:@theme-color;cursor:pointer;}
 .headerIcon{color:#999999;font-size:18px;float:left;position:relative;top:21px;margin-left:20px;transition:all .3s;cursor: pointer;}
 .headerIcon:hover{transform:rotate(90deg);}
 .headerLogo{float:left;position:relative;top:15px;margin:0 5px 0 30px;}
+.menuHeaderRightItem{float:left;padding: 0 10px;height:@header-height;line-height:@header-height;font-size:14px;}
 </style>

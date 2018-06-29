@@ -11,7 +11,9 @@ const en = {
 		'aboutus':'About Us',
 		'hello':'hello',
 		'msg':'hello',
-		'nav':'{nav}'
+		'nav':'{nav}',
+		'console':'Console',
+		'doc':'Doc'
 	},
 	...enLocale
 }

@@ -11,7 +11,9 @@ const cn = {
 		'aboutus':'关于我们',
 		'hello':'你好',
 		'msg':'提示',
-		'nav':'{nav}'
+		'nav':'{nav}',
+		'console':'控制台',
+		'doc':'文档'
 	},
 	...zhLocale
 }
