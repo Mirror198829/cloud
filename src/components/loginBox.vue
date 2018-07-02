@@ -60,7 +60,7 @@ export default {
         }}).then(res => {
             let username = res.data.name
             sessionStorage.setItem("username",username)
-            this.$router.push('Home')  
+            this.$router.push('HomePage')  
             this.isLoading = false
         }).catch(error => {
             this.isLoading = false

@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 const Home = () => import('@/page/home/home')
 const Login = () => import('@/page/login/login')
+const HomePage = () => import('@/page/home/homePage')
 const ConsoleHome = () => import('@/page/console/consoleHome')
 
 Vue.use(Router)
@@ -23,7 +24,14 @@ export default new Router({
       path: '/home',
       name: 'Home',
       component: Home,
-      meta: { title: '首页'}
+      children:[
+        {
+          path:'/homePage',
+          name:'HomePage',
+          component:HomePage,
+          meta: { title: '首页'},
+        }
+      ]
     },
     {
       path: '/consoleHome',

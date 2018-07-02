@@ -1,8 +1,7 @@
 <template>
   <div id="homePage">
-    <menu-header></menu-header>
-    <!-- <menu-footer></menu-footer> -->
-    <div style="height:1000px;background-color:#333"></div>
+    <menu-header class="menuHeader" style="z-index:1000"></menu-header>
+    <router-view/>
   </div>
 </template>
 
@@ -11,8 +10,7 @@ import MenuHeader from '@/components/menuHeader'
 export default {
   name: 'HomePage',
   components:{
-    'menu-header':MenuHeader,
-    // 'menu-footer':MenuFooter
+    'menu-header':MenuHeader
   },
   data () {
     return {
@@ -23,4 +21,5 @@ export default {
 </script>
 
 <style scoped>
+.menuHeader{position:fixed;top:0;left:0;right:0;z-index:9999;}
 </style>
