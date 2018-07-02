@@ -13,7 +13,8 @@ const en = {
 		'msg':'hello',
 		'nav':'{nav}',
 		'console':'Console',
-		'doc':'Doc'
+		'doc':'Doc',
+		'indexData':'{indexData}'
 	},
 	...enLocale
 }

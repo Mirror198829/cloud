@@ -13,7 +13,8 @@ const cn = {
 		'msg':'提示',
 		'nav':'{nav}',
 		'console':'控制台',
-		'doc':'文档'
+		'doc':'文档',
+		'indexData':'{indexData}'
 	},
 	...zhLocale
 }
