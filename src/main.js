@@ -7,6 +7,7 @@ import ElementUI from 'element-ui'
 import axios from 'axios'
 import NProgress from 'nprogress'
 import i18n from './i18n/i18n.js'
+import $ from 'jquery'
 
 import 'nprogress/nprogress.css'
 import 'element-ui/lib/theme-chalk/index.css'

@@ -77,7 +77,7 @@ export default {
 .loginEnLogo{position:relative;top:-16px;}
 .navItem{
     float:left;
-    a{display:block;color:@font-white;padding:0 16px;height:@header-height;line-height:@header-height;box-sizing:border-box;font-size:14px;transition:all .5s;}
+    a{display:block;color:@font-white;padding:0 16px;height:@header-height;line-height:@header-height;box-sizing:border-box;font-size:14px;transition:color .5s;}
 }
 .navItem>a:hover{border-bottom:3px solid @theme-color;color:@theme-color;cursor:pointer;}
 .headerIconWrap{float:left;font-size:18px;font-size:18px;width:60px;text-align:center;height:@header-height;cursor: pointer;position:relative;}

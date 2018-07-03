@@ -5,7 +5,7 @@
 -->
 <template>
   <div>
-     <div class="block" style="margin-top:60px;">
+     <div class="block" style="margin-top:60px;min-height:1000px;">
       <el-carousel trigger="click" :height="bannerH +'px'">
         <el-carousel-item v-for="(item,index) in bannerImgLst" :key="index">
           <img :src="'https://mirror198829.github.io/static/cloud/'+item" class="bannerImg"/>
@@ -14,22 +14,25 @@
       <div class="cloudIndexBoxWrap">
         <ul class="cloudIndexBox clearfix">
           <li class="cloudIndexItem" v-for="(item,key) in cloudIndexBoxData" :key="key">
-            <div class="cloudIndexBlock">
               <h3  v-if="$i18n.locale == 'cn'">{{$t('message.indexData',{'indexData':item.cnTitle})}}</h3>
               <h3  v-if="$i18n.locale == 'en'">{{$t('message.indexData',{'indexData':item.enTitle})}}</h3>
               <p v-if="$i18n.locale == 'cn'">{{$t('message.indexData',{'indexData':item.cnDetail})}}</p>
               <p v-if="$i18n.locale == 'en'">{{$t('message.indexData',{'indexData':item.enDetail})}}</p>
-            </div>
           </li>
         </ul>
       </div>
+      <cloud-compute-product style="margin-top:40px;"></cloud-compute-product>
     </div>
   </div>
 </template>
 
 <script>
+import cloudComputeProduct from './componet/cloudComputeProduct.vue'
 export default {
   name: 'homePage',
+  components:{
+    cloudComputeProduct
+  },
   data () {
     return {
       arr:[1,2,3,4],
@@ -62,12 +65,12 @@ export default {
 @import '../../less/index.less';
 .bannerImg{width:100%;height:100%;}
 .cloudIndexBox{max-width:1200px;width:1200px;margin:0 auto;color:#ccc;}
-.cloudIndexBoxWrap{width:100%;background-color:#2d3035}
-.cloudIndexBlock{border-right:1px solid #9b9ea0;padding:0 26px;}
-.cloudIndexItem{width:calc(100% / 4);color:#000;float:left;padding:30px 0 24px;box-sizing:border-box;cursor: pointer;transition:all .2s;
+.cloudIndexBoxWrap{width:100%;background-color:#2d3035;}
+.cloudIndexItem{width:calc(100% / 4);color:#000;float:left;padding:30px 25px 24px;box-sizing:border-box;cursor: pointer;transition:all .2s;border-left:1px solid #727577;border-color:hsla(0,0%,100%,.06);
  h3{color:@font-white;font-size:16px;margin-bottom:8px;height: 18px;line-height:18px;font-family: @font-family;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;}
  p{font-size:14px;color:#9b9ea0;line-height:24px;height:45px;overflow:hidden;}
 }
+.cloudIndexItem:last-child{border-right: 1px solid #727577;border-color:hsla(0,0%,100%,.06);}
 .cloudIndexItem:hover{background-color:#44464e;}
 // screen >= 1200
 @media screen and (min-width:1200px){}
@@ -81,7 +84,8 @@ export default {
 }
 
 @media screen and (max-width:768px){
-.cloudIndexItem{width:calc(100% / 2);}
+.cloudIndexItem{width:calc(100% / 2);border-left:none;}
+.cloudIndexItem:last-child{border-right:none;}
 }
 
 @media screen and (max-width:480px){
