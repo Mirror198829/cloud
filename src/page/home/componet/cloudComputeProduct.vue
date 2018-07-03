@@ -11,13 +11,42 @@
       </div>
       <div class="productBodyPc">
         <ul class="productNavTabs clearfix">
-          <li class="productNavTabItem" :class="{'active':key == activeIndex}" v-for="(item,key) in productLst" @click="changeTab(key)">
-            <img :src="'https://mirror198829.github.io/static/cloud/cloudProduct/'+item.icon"/>
-            <p>{{item.title}}</p>
+          <li class="productNavTabItem" :class="{'active':key == activeIndex}" v-for="(item,key) in productLst"  v-if="key<lineNum">
+            <span @click="changeTab(key)">
+              <img :src="'https://mirror198829.github.io/static/cloud/cloudProduct/'+item.icon"/>
+              <p class="productNavTabTitle">{{item.title}}</p>
+            </span>
           </li>
         </ul>
-        <div class="productTabContent" :class="{'active':activeIndex != null}">
-          <div class="productTabPannel" :class="{'active':key == activeIndex}" v-for="(item,key) in productLst">{{item.detail}}</div>
+        <div class="productTabContent" :class="{'active':activeIndex != null && activeIndex < lineNum}">
+          <div class="productTabPannel" :class="{'active':(key == activeIndex && key<lineNum) || (key == 0 && activeIndex == null)}" v-for="(item,key) in productLst">
+            <ul class="productLst">
+              <li class="productItem" v-for="(content,index) in item.content">
+                <h2>{{content.title}}</h2>
+                <p>{{content.detail}}</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="productBodyPc">
+        <ul class="productNavTabs clearfix">
+          <li class="productNavTabItem" :class="{'active':key == activeIndex}" v-for="(item,key) in productLst" v-if="key>=lineNum">
+            <span @click="changeTab(key)">
+              <img :src="'https://mirror198829.github.io/static/cloud/cloudProduct/'+item.icon"/>
+              <p class="productNavTabTitle">{{item.title}}</p>
+            </span>
+          </li>
+        </ul>
+        <div class="productTabContent" :class="{'active':activeIndex != null && activeIndex >= lineNum}" >
+          <div class="productTabPannel" :class="{'active':(key == activeIndex && key>=lineNum) || (key == 5 && activeIndex == null)}" v-for="(item,key) in productLst">
+            <ul class="productLst">
+              <li class="productItem" v-for="(content,index) in item.content">
+                <h2>{{content.title}}</h2>
+                <p>{{content.detail}}</p>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
   </div>
@@ -28,14 +57,9 @@ export default {
   name: 'cloudComputeProduct',
   data () {
     return {
-      activeIndex:null,
-      productLst:[
-        {title:'计算',detail:'计算123',icon:'icon-calc.svg'},
-        {title:'存储',detail:'存储123',icon:'icon-disk.svg'},
-        {title:'网络',detail:'网络123',icon:'icon-web.svg'},
-        {title:'数据库',detail:'数据库123',icon:'icon-datalib.svg'},
-        {title:'安全',detail:'安全123',icon:'icon-safe.svg'}
-      ]
+      activeIndex:0,
+      lineNum:5,
+      productLst:[]
     }
   },
   methods:{
@@ -45,23 +69,44 @@ export default {
       }else{
         this.activeIndex = index
       }
+    },
+    getProductInfo(){
+      this.$http.get('http://yapi.demo.qunar.com/mock/12097/getProduct').then(res => {
+        this.productLst = res.data.productLst
+      }).catch(error => {})
     }
   },
-  mounted(){},
+  mounted(){
+    this.getProductInfo()
+  },
   created(){}
 }
 </script>
 
 <style  scoped lang="less">
+@import '../../../less/index.less';
 .title,.subTitle{text-align:center;font-weight: 400;}
 .title{font-size:36px;line-height:46px;color:#3b516a;margin-bottom:10px;}
 .sectionHead{padding:50px 15px}
 .subTitle{font-size:18px;line-height:22px;color:#999;}
-.productNavTabs{max-width:1200px;width:1200px;margin:0 auto;display:flex;justify-content:space-between;}
-.productNavTabItem{}
-.productTabContent{background-color: #F1F3FF;height:0px;transition:height .5s;}
-.productTabContent.active{height:300px;}
-.productTabPannel{display:none;}
+.productNavTabs,.productLst{max-width:1200px;width:1200px;margin:0 auto;}
+.productNavTabs{display:flex;}
+.productNavTabItem{flex:1;text-align:center;padding-top:20px;
+  span{cursor: pointer;display:inline-block;position:relative;}
+  .productNavTabTitle{height:42px;font-size:18px;line-height:22px;color:#8A8D93;transition:all .2s;padding-left:20px;padding-right: 20px;margin-top:10px;}
+}
+.productItem{float:left;width:calc(100% / 3);box-sizing:border-box;padding:20px 40px;transition:all .3s;
+h2{margin-bottom:9px;font-size:18px;line-height:22px;color:#3b516a;font-weight:400;}
+p{height:66px;font-size:13px;line-height:22px;color:#95989D;overflow:hidden;};}
+.productItem:hover{background-color:#fff;border-radius:4px;cursor:pointer;
+h2{color:@theme-color;}}
+.productNavTabItem.active{.productNavTabTitle{color:@theme-color;}}
+.productNavTabItem:hover .productNavTabTitle{color:@theme-color;}
+.productNavTabItem.active .productNavTabTitle:after{left:0;right:0;}
+.productNavTabTitle:after{content:'';position:absolute;bottom:0;left:50%;right: 51%;height:4px;background-color:@theme-color;transition:all .2s;}
+.productTabContent{background-color: #F1F3FF;height:0px;transition:all .5s;overflow:hidden}
+.productTabContent.active{height:320px;}
+.productTabPannel{display:none;padding:20px 15px}
 .productTabPannel.active{display:block;}
 // screen >= 1200
 @media screen and (min-width:1200px){
@@ -69,6 +114,7 @@ export default {
 }
 // 1200>= screen >=992
 @media screen and (max-width:1200px){
+  .productNavTabs,.productLst{max-width:100%;width:100%}
 }
 
 @media screen and (max-width:992px){

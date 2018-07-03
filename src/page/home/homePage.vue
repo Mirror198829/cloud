@@ -5,7 +5,7 @@
 -->
 <template>
   <div>
-     <div class="block" style="margin-top:60px;min-height:1000px;">
+     <div class="block" style="margin-top:60px;min-height:2000px;">
       <el-carousel trigger="click" :height="bannerH +'px'">
         <el-carousel-item v-for="(item,index) in bannerImgLst" :key="index">
           <img :src="'https://mirror198829.github.io/static/cloud/'+item" class="bannerImg"/>
