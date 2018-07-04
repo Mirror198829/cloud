@@ -14,7 +14,9 @@ const en = {
 		'nav':'{nav}',
 		'console':'Console',
 		'doc':'Doc',
-		'indexData':'{indexData}'
+		'indexData':'{indexData}',
+		'productTitle':'Provide cloud computing products',
+		'subTitle':'Credible, Open, Global service'
 	},
 	...enLocale
 }

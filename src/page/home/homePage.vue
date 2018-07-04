@@ -21,7 +21,7 @@
           </li>
         </ul>
       </div>
-      <cloud-compute-product style="margin-top:40px;"></cloud-compute-product>
+      <cloud-compute-product></cloud-compute-product>
     </div>
   </div>
 </template>
@@ -64,7 +64,7 @@ export default {
 <style scoped lang="less">
 @import '../../less/index.less';
 .bannerImg{width:100%;height:100%;}
-.cloudIndexBox{max-width:1200px;width:1200px;margin:0 auto;color:#ccc;}
+.cloudIndexBox{max-width:1150px;width:1150px;margin:0 auto;color:#ccc;}
 .cloudIndexBoxWrap{width:100%;background-color:#2d3035;}
 .cloudIndexItem{width:calc(100% / 4);color:#000;float:left;padding:30px 25px 24px;box-sizing:border-box;cursor: pointer;transition:all .2s;border-left:1px solid #727577;border-color:hsla(0,0%,100%,.06);
  h3{color:@font-white;font-size:16px;margin-bottom:8px;height: 18px;line-height:18px;font-family: @font-family;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;}
@@ -76,7 +76,7 @@ export default {
 @media screen and (min-width:1200px){}
 // 1200>= screen >=992
 @media screen and (max-width:1200px){
-.cloudIndexBox{width:80%}
+.cloudIndexBox{width:100%}
 
 }
 

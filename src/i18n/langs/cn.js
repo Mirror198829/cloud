@@ -14,7 +14,9 @@ const cn = {
 		'nav':'{nav}',
 		'console':'控制台',
 		'doc':'文档',
-		'indexData':'{indexData}'
+		'indexData':'{indexData}',
+		'productTitle':'为您提供丰富多样的云计算产品',
+		'subTitle':'可信，开放，全球服务'
 	},
 	...zhLocale
 }
