@@ -87,6 +87,7 @@
 </template>
 
 <script>
+import productData from '../../../mock/home.js'
 export default {
   name: 'cloudComputeProduct',
   data () {
@@ -105,9 +106,7 @@ export default {
       }
     },
     getProductInfo(){
-      this.$http.get('http://yapi.demo.qunar.com/mock/12097/getProduct').then(res => {
-        this.productLst = res.data.productLst
-      }).catch(error => {})
+      this.productLst = productData.productLst
     }
   },
   mounted(){

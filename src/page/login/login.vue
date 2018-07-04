@@ -8,7 +8,7 @@
 		<div id="loginTopbar" class="clearfix">
 			<img class="loginCnLogo" src="../../assets/logo.png" height="24" width="103" v-if="$i18n.locale == 'cn'">
 			<img class="loginEnLogo" src="../../assets/enlogo.png" height="60" width="140" v-if="$i18n.locale == 'en'">
-			<span id="homeLink">{{$t('message.home')}}</span>
+			<span id="homeLink" @click="goHome">{{$t('message.home')}}</span>
 			<div id="switchLang">
 				<lang-switch></lang-switch>
 			</div>
@@ -59,7 +59,11 @@ export default {
 			footerItemLst:['关于我们','法律声明与隐私权政策','廉政举报','联系我们']
 		}
 	},
-	methods:{},
+	methods:{
+		goHome(){
+			this.$router.push('HomePage')
+		}
+	},
 	mounted(){},
 	created(){}
 }
