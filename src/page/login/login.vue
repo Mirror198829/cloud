@@ -32,12 +32,14 @@
 			<el-row>
 				<el-col :md="24" :lg="24" :xl="24" class="hidden-xs-only"> 
 					<ul class="clearfix">
-						<li class="footerItem" v-for="item in footerItemLst">{{item}}</li>
+						<li  v-if="$i18n.locale == 'cn'" class="footerItem" v-for="item in footerItemLst">{{$t('message.footer',{'footer':item.cn})}}</li>
+						<li  v-if="$i18n.locale == 'en'" class="footerItem" v-for="item in footerItemLst">{{$t('message.footer',{'footer':item.en})}}</li>
 					</ul>
 				</el-col>
 				<el-col :xs="24" class="hidden-sm-and-up"> 
-					<ul>
-						<li class="footerItemXs" v-for="item in footerItemLst">{{item}}</li>
+					<ul class="clearfix" style="width:100%">
+						<li v-if="$i18n.locale == 'cn'" class="footerItemXs" v-for="item in footerItemLst">{{$t('message.footer',{'footer':item.cn})}}</li>
+						<li v-if="$i18n.locale == 'en'" class="footerItemXs" v-for="item in footerItemLst">{{$t('message.footer',{'footer':item.en})}}</li>
 					</ul>
 				</el-col>
 			</el-row>
@@ -56,7 +58,12 @@ export default {
 	},
 	data () {
 		return {
-			footerItemLst:['关于我们','法律声明与隐私权政策','廉政举报','联系我们']
+			footerItemLst:[
+				{cn:'关于我们',en:'About Us'},
+				{cn:'法律声明',en:'Legal'},
+				{cn:'廉政举报',en:'Incorruption'},
+				{cn:'联系我们',en:'Contact'}
+			]
 		}
 	},
 	methods:{
@@ -80,7 +87,7 @@ export default {
 #loginFooter{height:80px;background-color: @base-color;}
 #main{height:calc(100vh - 140px);position: relative;background-image: url('../../assets/login/bg.jpg');display: table;width:100%;background-size: 100% 100%;background-color:#1e2225}
 .footerItem{color:#9b9ea0;float:left;padding:0 17px;font-size:16px;position: relative;top:30px;}
-.footerItemXs{color:#9b9ea0;font-size:12px;padding:2px 15px;}
+.footerItemXs{color:#9b9ea0;font-size:14px;padding:10px 5px;width:calc(100% / 2);float:left;text-align:center;box-sizing:border-box}
 .loginMainWrap{padding:40px;padding-left: 20px !important;padding-right: 20px !important;box-sizing: border-box;}
 .subIntroduce{color:@font-white;line-height: 2;}
 .loginLeftSide{
@@ -88,6 +95,22 @@ export default {
 	h1{
 		color:@font-white;margin-bottom:15px;	
 	}
+}
+// screen >= 1200
+@media screen and (min-width:1200px){
+
+}
+// 1200>= screen >=992
+@media screen and (max-width:1200px){
+}
+
+@media screen and (max-width:992px){
+}
+
+@media screen and (max-width:768px){
+}
+
+@media screen and (max-width:480px){
 }
 </style>
 <style>

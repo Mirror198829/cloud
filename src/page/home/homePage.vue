@@ -22,16 +22,19 @@
         </ul>
       </div>
       <cloud-compute-product></cloud-compute-product>
+      <solution></solution>
     </div>
   </div>
 </template>
 
 <script>
 import cloudComputeProduct from './componet/cloudComputeProduct.vue'
+import solution from './componet/solution.vue'
 export default {
   name: 'homePage',
   components:{
-    cloudComputeProduct
+    cloudComputeProduct,
+    solution
   },
   data () {
     return {
@@ -64,7 +67,7 @@ export default {
 <style scoped lang="less">
 @import '../../less/index.less';
 .bannerImg{width:100%;height:100%;}
-.cloudIndexBox{max-width:1150px;width:1150px;margin:0 auto;color:#ccc;}
+.cloudIndexBox{max-width:@max-pcW;width:@max-pcW;margin:0 auto;color:#ccc;}
 .cloudIndexBoxWrap{width:100%;background-color:#2d3035;}
 .cloudIndexItem{width:calc(100% / 4);color:#000;float:left;padding:30px 25px 24px;box-sizing:border-box;cursor: pointer;transition:all .2s;border-left:1px solid #727577;border-color:hsla(0,0%,100%,.06);
  h3{color:@font-white;font-size:16px;margin-bottom:8px;height: 18px;line-height:18px;font-family: @font-family;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;}

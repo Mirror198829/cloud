@@ -122,7 +122,7 @@ export default {
 .title{font-size:36px;line-height:46px;color:#3b516a;margin-bottom:10px;}
 .sectionHead{padding:50px 15px}
 .subTitle{font-size:18px;line-height:22px;color:#999;}
-.productBodyPc .productNavTabs,.productBodyPc .productLst{max-width:1150px;width:1150px;margin:0 auto;box-sizing:border-box;overflow:hidden;}
+.productBodyPc .productNavTabs,.productBodyPc .productLst{max-width:@max-pcW;width:@max-pcW;margin:0 auto;box-sizing:border-box;overflow:hidden;}
 .productBodyPc .productNavTabs{display:flex;}
 .productBodyPc .productNavTabItem{flex:1;text-align:center;padding-top:20px;
   span{cursor: pointer;display:inline-block;position:relative;}

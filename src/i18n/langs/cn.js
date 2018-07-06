@@ -16,7 +16,8 @@ const cn = {
 		'doc':'文档',
 		'indexData':'{indexData}',
 		'productTitle':'为您提供丰富多样的云计算产品',
-		'subTitle':'可信，开放，全球服务'
+		'subTitle':'可信，开放，全球服务',
+		'footer':'{footer}'
 	},
 	...zhLocale
 }
