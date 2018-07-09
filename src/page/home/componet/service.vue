@@ -88,7 +88,14 @@ export default {
   .sectionWrap{padding:20px 15px;}
   .forMore{padding:10px 0;}
   .serviceWrap{width:90%;
-    .serviceItem{width:calc( (100% - 20px) / 2);margin:5px;box-shadow: 1px 1px 10px 1px #ccc;}
+    .serviceItem{width:calc( (100% - 20px) / 2);margin:5px;box-shadow: 1px 1px 10px 1px #ccc;
+      
+    }
+  }
+  .serviceItem.serviceFirst{
+    &:hover{
+      box-shadow:1px 1px 10px 1px #ccc;
+    }
   }
 }
 
@@ -97,10 +104,32 @@ export default {
 }
 
 @media screen and (max-width:768px){
-  .serviceWrap .serviceItem{height:200px;}
+  .serviceWrap{
+   .serviceItem{height:200px;
+      .serviceImg{margin-top:30px;}
+      h3{margin-top:10px;margin-bottom:10px;}
+      p{display:block;}
+   }
+  }
+  .serviceItem.serviceFirst{
+    h4{
+      font-size:20px;margin-top:30px;
+    }
+  }
 }
 
 @media screen and (max-width:480px){
-  .serviceWrap .serviceItem{height:200px;}
+  .serviceWrap{
+    .serviceItem{height:200px;
+      .serviceImg{margin-top:50px;}
+      h3{margin-top:15px;font-size:14px;}
+      p{display:none;}
+    }
+  }
+  .serviceItem.serviceFirst{
+    h4{
+      font-size:20px;margin-top:60px;
+    }
+  }
 }
 </style>
