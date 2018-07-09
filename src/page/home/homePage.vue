@@ -23,6 +23,7 @@
       </div>
       <cloud-compute-product></cloud-compute-product>
       <solution></solution>
+      <service></service>
     </div>
   </div>
 </template>
@@ -30,11 +31,13 @@
 <script>
 import cloudComputeProduct from './componet/cloudComputeProduct.vue'
 import solution from './componet/solution.vue'
+import service from './componet/service.vue'
 export default {
   name: 'homePage',
   components:{
     cloudComputeProduct,
-    solution
+    solution,
+    service
   },
   data () {
     return {

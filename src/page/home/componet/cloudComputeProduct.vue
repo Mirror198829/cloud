@@ -7,8 +7,7 @@
   <div>
       <div class="productBodyPc">
         <div class="sectionHead">
-         <h1 class="title">{{$t('message.productTitle')}}</h1>
-         <h3 class="subTitle">{{$t('message.subTitle')}}</h3>
+         <section-title my-title="为您提供丰富多样的云计算产品" my-sub-title="可信，开放，全球服务" my-color="#3b516a"></section-title>
         </div>
         <ul class="productNavTabs clearfix">
           <li class="productNavTabItem" :class="{'active':key == activeIndex}" v-for="(item,key) in productLst"  v-if="key<lineNum">
@@ -46,17 +45,13 @@
             </ul>
           </div>
         </div>
-        <div class="section-more-wrap">
-          <a href="https://www.huaweicloud.com/product/" target="_blank">
-            查看更多云计算产品
-            <i class="fa fa-angle-right"></i>
-          </a>
+        <div style="padding:50px 0">
+          <for-more formore-content="查看更多云计算产品" formore-url="https://www.huaweicloud.com/product/"></for-more>
         </div>
       </div>
       <div class="productBodyMd">
         <div class="sectionHead">
-         <h1 class="title">{{$t('message.productTitle')}}</h1>
-         <h3 class="subTitle">{{$t('message.subTitle')}}</h3>
+         <section-title my-title="为您提供丰富多样的云计算产品" my-sub-title="可信，开放，全球服务" my-color="#3b516a"></section-title>
         </div>
         <div style="width:90%;margin:0 auto;">
           <ul class="productNavTabs">
@@ -76,11 +71,8 @@
             </li>
           </ul>
         </div>
-        <div class="section-more-wrap">
-          <a href="https://www.huaweicloud.com/product/" target="_blank">
-            查看更多云计算产品
-            <i class="fa fa-angle-right"></i>
-          </a>
+        <div style="padding:10px 0">
+          <for-more formore-content="查看更多云计算产品" formore-url="https://www.huaweicloud.com/product/"></for-more>
         </div>
       </div>
   </div>
@@ -88,8 +80,14 @@
 
 <script>
 import productData from '../../../mock/home.js'
+import forMore from './forMore.vue'
+import sectionTitle from './sectionTitle.vue'
 export default {
   name: 'cloudComputeProduct',
+  components:{
+    forMore,
+    sectionTitle
+  },
   data () {
     return {
       activeIndex:0,
@@ -118,10 +116,7 @@ export default {
 
 <style  scoped lang="less">
 @import '../../../less/index.less';
-.title,.subTitle{text-align:center;font-weight: 400;}
-.title{font-size:36px;line-height:46px;color:#3b516a;margin-bottom:10px;}
 .sectionHead{padding:50px 15px}
-.subTitle{font-size:18px;line-height:22px;color:#999;}
 .productBodyPc .productNavTabs,.productBodyPc .productLst{max-width:@max-pcW;width:@max-pcW;margin:0 auto;box-sizing:border-box;overflow:hidden;}
 .productBodyPc .productNavTabs{display:flex;}
 .productBodyPc .productNavTabItem{flex:1;text-align:center;padding-top:20px;
@@ -141,12 +136,7 @@ h2{color:@theme-color;}}
 .productBodyPc .productTabContent.active{height:320px;}
 .productBodyPc .productTabPannel{display:none;padding:20px 15px}
 .productBodyPc .productTabPannel.active{display:block;}
-.section-more-wrap{text-align:center;padding:50px 0;
-a{color:#8A8D93;font-size:18px;line-height:22px;cursor: pointer;}
-i{margin-left:5px;position:relative;left:0;transition:all .2s;}}
-.section-more-wrap a:hover{color:@theme-color;
-  i{left:10px;}
-}
+
 // screen >= 1200
 @media screen and (min-width:1200px){
   .productBodyPc{display:block;}
@@ -171,11 +161,7 @@ i{margin-left:5px;position:relative;left:0;transition:all .2s;}}
       color:@theme-color;
     }
   }
-  .title{font-size:18px;}
-  .subTitle{font-size:14px;}
   .sectionHead{padding:20px 15px;}
-  .section-more-wrap{padding:15px 0;
-    a{font-size:14px;}}
   .productTabPannel{
     .productItem{padding:5px 25px;
       h2{font-size:14px;font-weight:400;color:#34475F;line-height:20px;margin-bottom:10px;}

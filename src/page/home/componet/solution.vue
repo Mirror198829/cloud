@@ -7,13 +7,13 @@
   <div class="sectionSolution">
     <div class="solution">
       <div class="solutionHead">
-        <h2>为您量身定制解决方案</h2>
-        <p>满足广泛的业务需求</p>
+        <section-title my-title="为您量身定制解决方案" my-sub-title="满足广泛的业务需求" my-color="#fff"></section-title>
       </div>
       <div class="solutionWrap clearfix">
         <div class="solutionNav">
           <ul class="solutionNavs">
             <li class="solutionNavItem" v-for="(item,key) in solutionLst" :class="{'active':key == solutionActive}" @mouseover="addSolutionNavItemActive(key)">
+              <i class="solutionIcon fa" :class="'fa-'+item.icon"></i>
               <h2>{{item.title}}</h2>
             </li>
           </ul>
@@ -44,15 +44,23 @@
           </div>
         </div>
       </div>
-      <div style="padding:50px 0;">更多解决方案 -></div>
+      <div class="solutionFormore">
+        <for-more formore-content="查看所有解决方案" formore-url="https://www.huaweicloud.com/solution/"></for-more>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import solutionLst from '../../../mock/solution.js'
+import forMore from './forMore.vue'
+import sectionTitle from './sectionTitle.vue'
 export default {
   name: 'solution',
+  components:{
+    forMore,
+    sectionTitle
+  },
   data () {
     return {
       solutionLst:[],
@@ -103,6 +111,7 @@ p{color:#fff;opacity: 0.6;font-size:18px;line-height:22px;}}
 .solutionNavs{
   .solutionNavItem{box-sizing:border-box;width:240px;background-color:#4b4f63;cursor: pointer;
     h2{color:@font-white;font-weight:400;font-size:18px;line-height:72px;margin-left:20px;}
+    .solutionIcon{display:none;}
   }
 }
 .solutionNavItem.active{width:260px;background-color:@theme-color;position:relative;left:-10px;
@@ -114,6 +123,7 @@ p{color:#fff;opacity: 0.6;font-size:18px;line-height:22px;}}
 .recommandIcon{font-size:18px;position:relative;left:-10px;top:2px;}
 }
 .recommandItem:hover{background-color:#4b4f63;}
+.solutionFormore{padding:50px 0;}
 // screen >= 1200
 @media screen and (min-width:1200px){
 
@@ -128,16 +138,21 @@ p{color:#fff;opacity: 0.6;font-size:18px;line-height:22px;}}
   }
   .solutionNav{width:100%;
     .solutionNavItem{
+      position:relative;
       width:100%;
-      h2{text-align:center;margin-left:0;font-size:14px;}
+      h2{text-align:center;margin-left:0;font-size:14px;position:relative;top:15px;}
+      .solutionIcon{display:block;text-align:center;color:@font-white;position:absolute;left:50%;transform:translate(-50%,0);top:10px;font-size:26px;}
+      &:nth-child(2n){background-color:@base-color;}
+      &:nth-child(2n + 1){background-color:#474a5d}
     }
   }
   .solutionDetail{display:none;}
  }
 
- .solutionNavItem.active{background-color:rgba(255,255,255,0);position:relative;left:0;
+ .solutionNavItem.active{background-color:transparent;position:relative;left:0;
     h2{margin-left:0;}
   }
+  .solutionFormore{padding:10px 0;}
 }
 
 @media screen and (max-width:992px){

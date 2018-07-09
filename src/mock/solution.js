@@ -11,6 +11,15 @@ const solutionData = Mock.mock({
         "通用解决方案",
         "DevOps解决方案"
       ],
+      "icon|+1":[
+        "cubes",
+        "life-ring",
+        "support",
+        "gamepad",
+        "train",
+        "shopping-basket",
+        "cc-mastercard"
+      ],
       "detail|+1": [
         "结合丰富的行业平台服务和华为基础云服务，提供端到端电商解决方案，构建企业自有电商生态。可快速搭建电商平台，快速完成所有资源的创建和配置",
         "依托华为“端-管-云”优势，提供包括IoT、大数据分析、应用使能以及安全管理等服务，构建面向亿级联接的车联网云平台，助力企业向出行服务提供商转型，让人车生活更智能",
