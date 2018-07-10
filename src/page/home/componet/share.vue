@@ -25,7 +25,6 @@
         </ul>
       </li>
     </ul>
-    <div style="height:50px;"></div>
   </div>
 </template>
 
@@ -82,7 +81,7 @@ export default {
 
 <style  scoped lang="less">
 @import '../../../less/index.less';
-.section{max-width:@max-pcW;width:@max-pcW;margin:0 auto;}
+.section{max-width:@max-pcW;width:@max-pcW;margin:0 auto;padding-bottom:50px;}
 .sectionWrap{padding:50px 0}
 .forumItem{width:calc( (100% - 20px ) / 3);float:left;margin:5px;
   &:first-child{margin-left:0px}
@@ -98,7 +97,7 @@ export default {
     li{border-bottom:1px dashed rgba(52,71,95,.3);color:#3b516a;padding:10px 0;box-sizing:border-box;
       &:last-child{border-bottom:none;}
       .forumBodyTitle{float:left;width:calc(100% - 70px);font-size:14px;line-height:22px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-      .forumBodyTime{float:right;width:65px;font-size:12px;color:#95989D;}
+      .forumBodyTime{float:right;width:65px;font-size:12px;color:#95989D;position:relative;top:2px;}
     }
 
   }
