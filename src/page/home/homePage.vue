@@ -24,6 +24,7 @@
       <cloud-compute-product></cloud-compute-product>
       <solution></solution>
       <service></service>
+      <share></share>
     </div>
   </div>
 </template>
@@ -32,12 +33,14 @@
 import cloudComputeProduct from './componet/cloudComputeProduct.vue'
 import solution from './componet/solution.vue'
 import service from './componet/service.vue'
+import share from './componet/share.vue'
 export default {
   name: 'homePage',
   components:{
     cloudComputeProduct,
     solution,
-    service
+    service,
+    share
   },
   data () {
     return {
