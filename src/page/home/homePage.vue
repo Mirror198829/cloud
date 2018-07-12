@@ -24,7 +24,16 @@
       <cloud-compute-product></cloud-compute-product>
       <solution></solution>
       <service></service>
+      <data-support></data-support>
       <share></share>
+      <div class="registerArea">
+        <div class="registerAreaWrap">
+          <h2 class="registerTitle">免费试用</h2>
+          <p class="registerContent">高达4核8G云服务器0元体验</p>
+          <div class="registerBtn">免费体验</div>
+        </div>
+      </div>
+      <div style="height:100px;"></div>
     </div>
   </div>
 </template>
@@ -34,13 +43,15 @@ import cloudComputeProduct from './componet/cloudComputeProduct.vue'
 import solution from './componet/solution.vue'
 import service from './componet/service.vue'
 import share from './componet/share.vue'
+import dataSupport from './componet/dataSupport.vue'
 export default {
   name: 'homePage',
   components:{
     cloudComputeProduct,
     solution,
     service,
-    share
+    share,
+    dataSupport
   },
   data () {
     return {
@@ -81,12 +92,26 @@ export default {
 }
 .cloudIndexItem:last-child{border-right: 1px solid #727577;border-color:hsla(0,0%,100%,.06);}
 .cloudIndexItem:hover{background-color:#44464e;}
+.registerArea{padding:30px 0;background:url('../../assets/login/register-v3.png') center center;box-sizing:border-box;height:135px;
+  .registerAreaWrap{max-width:710px;width:710px;margin:0 auto;position:relative;
+    .registerTitle{font-size:28px;line-height:40px;color:#34475f;font-weight:400;}
+    .registerContent{font-size:20px;line-height:28px;color:#34475f;margin-left:55px;margin-top:4px;}
+    .registerBtn{position:absolute;right:0;top:0;margin-top:20px;height:40px;line-height:40px;border:1px solid @theme-color;background-color:@theme-color;padding:0px 40px;color:@font-white;border-radius:2px;}
+  }
+}
+
 // screen >= 1200
 @media screen and (min-width:1200px){}
 // 1200>= screen >=992
 @media screen and (max-width:1200px){
 .cloudIndexBox{width:100%}
-
+.registerArea{padding:15px 0;
+  .registerAreaWrap{width:100%;text-align:center;
+    .registerTitle{font-size:18px;text-align:center;line-height:1;margin-top:5px;}
+    .registerContent{font-size:14px;line-height:14px;color:#34475f;margin-top:10px;text-align:center;margin-left:0;line-height:1;}
+    .registerBtn{position:relative;right:0;top:0;margin-top:10px;height:40px;line-height:40px;border:1px solid @theme-color;background-color:@theme-color;padding:0px 40px;display: inline-block;}
+  }
+}
 }
 
 @media screen and (max-width:992px){
