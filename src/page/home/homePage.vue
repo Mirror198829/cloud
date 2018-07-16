@@ -4,7 +4,7 @@
 - github:https://github.com/Mirror198829
 -->
 <template>
-  <div>
+  <div id="homePage">
      <div class="block" style="margin-top:60px;min-height:2000px;">
       <el-carousel trigger="click" :height="bannerH +'px'">
         <el-carousel-item v-for="(item,index) in bannerImgLst" :key="index">
@@ -83,6 +83,7 @@ export default {
 
 <style scoped lang="less">
 @import '../../less/index.less';
+#homePage{background-color:#fff}
 .bannerImg{width:100%;height:100%;}
 .cloudIndexBox{max-width:@max-pcW;width:@max-pcW;margin:0 auto;color:#ccc;}
 .cloudIndexBoxWrap{width:100%;background-color:#2d3035;}

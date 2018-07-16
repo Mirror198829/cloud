@@ -4,7 +4,7 @@
 - github:https://github.com/Mirror198829
 -->
 <template>
-  <div>
+  <div style="background-color:#fff;">
     <div class="sectionWrap">
       <section-title my-title="为您臻选优质软件和服务" my-sub-title="汇聚万千应用的一站式云服务平台" my-color="#3B516A"></section-title>
     </div>
@@ -57,8 +57,8 @@ export default {
 
 <style  scoped lang="less">
 @import '../../../less/index.less';
-.sectionWrap,.forMore{padding:50px 0}
-.serviceWrap{max-width:@max-pcW;width:@max-pcW;margin:0 auto;
+.sectionWrap,.forMore{padding:50px 0;background-color:#fff;}
+.serviceWrap{max-width:@max-pcW;width:@max-pcW;margin:0 auto;background-color:#fff;
   .serviceItem{float:left;width:calc(100% / 4);height:340px;box-sizing:border-box;cursor: pointer;
     .serviceImg{text-align:center;margin-top:80px;}
     h3{text-align:center;font-weight:400;margin-top:25px;margin-bottom:44px;font-size:18px;color:#34475f;cursor: pointer;

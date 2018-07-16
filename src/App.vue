@@ -16,4 +16,5 @@ export default {
 .clearfix:after{ content:''; display:block; clear:both;}
 ul,li{list-style: none;}
 a{text-decoration: none;}
+body{background-color:#373d41}
 </style>

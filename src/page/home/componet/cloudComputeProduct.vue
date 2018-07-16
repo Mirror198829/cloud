@@ -45,7 +45,7 @@
             </ul>
           </div>
         </div>
-        <div style="padding:50px 0">
+        <div style="padding:50px 0;background-color:#fff">
           <for-more formore-content="查看更多云计算产品" formore-url="https://www.huaweicloud.com/product/"></for-more>
         </div>
       </div>
@@ -116,8 +116,9 @@ export default {
 
 <style  scoped lang="less">
 @import '../../../less/index.less';
-.sectionHead{padding:50px 15px}
-.productBodyPc .productNavTabs,.productBodyPc .productLst{max-width:@max-pcW;width:@max-pcW;margin:0 auto;box-sizing:border-box;overflow:hidden;}
+.sectionHead{padding:50px 15px;background-color:#fff;}
+.productBodyPc{background-color:#fff;}
+.productBodyPc .productNavTabs,.productBodyPc .productLst{max-width:@max-pcW;width:@max-pcW;margin:0 auto;box-sizing:border-box;overflow:hidden;background-color:#fff;}
 .productBodyPc .productNavTabs{display:flex;}
 .productBodyPc .productNavTabItem{flex:1;text-align:center;padding-top:20px;
   span{cursor: pointer;display:inline-block;position:relative;}

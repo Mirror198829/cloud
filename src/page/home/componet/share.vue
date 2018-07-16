@@ -4,7 +4,7 @@
 - github:https://github.com/Mirror198829
 -->
 <template>
-  <div class="section">
+  <div class="section" style="background-color:#fff">
     <div class="sectionWrap">
       <section-title my-title="知识分享的开发者技术社区" my-sub-title="技术、云圈、大咖" my-color="#3B516A"></section-title>
     </div>

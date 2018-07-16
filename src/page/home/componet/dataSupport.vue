@@ -4,7 +4,7 @@
 - github:https://github.com/Mirror198829
 -->
 <template>
-  <div class="sectionBg">
+  <div class="sectionBg" id="dataSupportSection">
     <div class="solutionHead">
         <section-title my-title="更可靠的数据支持" my-sub-title="高安全、高可靠的数据支持，全方位保障实践" my-color="#fff"></section-title>
     </div>
@@ -159,14 +159,25 @@ export default {
       this.num3 = 100
       this.num4 = 7
       this.num5 = 24
+    },
+    handleScroll(){
+      
+      let windowH = document.body.clientHeight
+      let docSrollTop = $(document).scrollTop() + $(window).height()
+      let sectionTop = $(".sectionBody").offset().top 
+      console.log(windowH)
+      if((docSrollTop - sectionTop) >= (-735.25) && (docSrollTop - sectionTop) <= 98.75){
+       // this.setAnimatedNum()
+      }
     }
   },
   mounted(){
-    setTimeout(()=>{
-      this.setAnimatedNum()
-    },200)
+    this.handleScroll()
+    window.addEventListener('scroll',this.handleScroll)
   },
-  created(){}
+  created(){
+
+  }
 }
 </script>
 
