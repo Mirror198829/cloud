@@ -33,7 +33,7 @@
           <div class="registerBtn">免费体验</div>
         </div>
       </div>
-      <div style="height:100px;"></div>
+      <div style="height:1000px;"></div>
     </div>
   </div>
 </template>

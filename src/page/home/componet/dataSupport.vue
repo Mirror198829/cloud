@@ -13,7 +13,7 @@
         <div class="sectionLeft"></div>
         <div class="sectionRight">
           <span class="numberInit">{{num1}}</span>
-          <p class="numberGrow" style="width:265px;">{{formatNum1}}</p>
+          <p class="numberGrow numberGrow1">{{formatNum1}}</p>
           <p class="sectionTxt">抵御攻击</p>
         </div>
       </li>
@@ -21,7 +21,7 @@
         <div class="sectionLeft sectionImg2"></div>
         <div class="sectionRight">
           <span class="numberInit">{{num2}}</span>
-          <p class="numberGrow" style="width:340px;">{{animatedNum2}} %</p>
+          <p class="numberGrow numberGrow2">{{animatedNum2}} %</p>
           <p class="sectionTxt">数据可靠性</p>
         </div>
       </li>
@@ -29,7 +29,7 @@
         <div class="sectionLeft sectionImg3"></div>
         <div class="sectionRight">
           <span class="numberInit">{{num3}}</span>
-          <p class="numberGrow" style="width:110px">{{animatedNum3}} <span class="unit">倍</span></p>
+          <p class="numberGrow numberGrow3">{{animatedNum3}} <span class="unit">倍</span></p>
           <p class="sectionTxt">数据赔偿</p>
         </div>
       </li>
@@ -38,7 +38,7 @@
         <div class="sectionRight">
           <span class="numberInit">{{num4}}</span>
           <span class="numberInit">{{num5}}</span>
-          <p class="numberGrow" style="width:120px;">{{animatedNum4}} X {{animatedNum5}}</p>
+          <p class="numberGrow numberGrow4">{{animatedNum4}} X {{animatedNum5}}</p>
           <p class="sectionTxt">客户服务支持</p>
         </div>
       </li>
@@ -160,14 +160,14 @@ export default {
       this.num4 = 7
       this.num5 = 24
     },
-    handleScroll(){
-      
+    handleScroll(){      
       let windowH = document.body.clientHeight
-      let docSrollTop = $(document).scrollTop() + $(window).height()
-      let sectionTop = $(".sectionBody").offset().top 
-      console.log(windowH)
-      if((docSrollTop - sectionTop) >= (-735.25) && (docSrollTop - sectionTop) <= 98.75){
-       // this.setAnimatedNum()
+      let docSrollTop = $(document).scrollTop()   //文档卷动值
+      let clientH = $(window).height()  //视窗大小
+      let sectionTop = $(".sectionBody").offset().top //动态文字模块距离文档头部的距离
+      let sectionH = $(".sectionBody").height()
+      if((docSrollTop + clientH - sectionTop) >= 0 && (docSrollTop - sectionTop - sectionH) <= 0){
+        this.setAnimatedNum()
       }
     }
   },
@@ -196,6 +196,10 @@ export default {
       .numberGrow{color:@font-white;font-size:40px;line-height:26px;height:30px;
         .unit{font-size:24px;}
       }
+      .numberGrow1{width:265px;}
+      .numberGrow2{width:340px;}
+      .numberGrow3{width:110px;}
+      .numberGrow4{width:120px;}
       .sectionTxt{color:@font-white;font-size:14px;line-height:26px;margin-top:10px;}
     }
   }
@@ -206,15 +210,62 @@ export default {
 }
 // 1200>= screen >=992
 @media screen and (max-width:1200px){
+  .solutionHead{padding:25px 0}
   .sectionBg{height:300px}
+  .sectionBody{width:90%;margin:0 auto;
+  .sectionItem{
+    .sectionRight{
+      .numberGrow{
+          .unit{font-size:18px;}
+      }
+      .numberGrow{font-size:24px;line-height:24px;height:24px;}
+      .numberGrow1{width:160px;}
+      .numberGrow2{width:220px;}
+      .numberGrow3{width:80px;}
+      .numberGrow4{width:80px;}
+    }
+  }
+}
+
 }
 
 @media screen and (max-width:992px){
-  .sectionBg{height:250px}
+  .sectionBg{height:300px}
+  .sectionBody{
+    .sectionItem{
+      .sectionLeft{}
+      .sectionRight{
+        .numberGrow{
+          .unit{font-size:16px;}
+        }
+        .numberGrow{font-size:18px;line-height:18px;height:18px;}
+        .numberGrow1{width:120px;}
+        .numberGrow2{width:170px;}
+        .numberGrow3{width:70px;}
+        .numberGrow4{width:70px;}
+      }
+    }
+  }
 }
 
 @media screen and (max-width:768px){
   .sectionBg{height:200px}
+  .sectionBody{
+      .sectionItem{
+        .sectionLeft{display:none;}
+        .sectionRight{
+          .numberGrow{
+            .unit{font-size:12px;}
+          }
+          .numberGrow{font-size:12px;line-height:14px;height:14px;}
+          .numberGrow1{width:80px;}
+          .numberGrow2{width:120px;}
+          .numberGrow3{width:45px;}
+          .numberGrow4{width:45px;}
+          .sectionTxt{margin-top:5px;font-size:12px;display:none;}
+        }
+      }
+    }
 }
 
 @media screen and (max-width:480px){
