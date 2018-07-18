@@ -33,7 +33,7 @@
           <div class="registerBtn">免费体验</div>
         </div>
       </div>
-      <div style="height:1000px;"></div>
+      <footer-info></footer-info>
     </div>
   </div>
 </template>
@@ -44,6 +44,7 @@ import solution from './componet/solution.vue'
 import service from './componet/service.vue'
 import share from './componet/share.vue'
 import dataSupport from './componet/dataSupport.vue'
+import footerInfo from '../../components/footer.vue'
 export default {
   name: 'homePage',
   components:{
@@ -51,7 +52,8 @@ export default {
     solution,
     service,
     share,
-    dataSupport
+    dataSupport,
+    footerInfo
   },
   data () {
     return {

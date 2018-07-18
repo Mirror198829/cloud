@@ -185,7 +185,7 @@ export default {
 @import '../../../less/index.less';
 .solutionHead{padding:50px 0;}
 .sectionBg{background:url('../../../assets/login/support.png') no-repeat;height:450px;background-size: cover;width:100%}
-.sectionBody{max-width:@max-pcW;width:@max-pcW;margin:0 auto;display:flex;justify-content:space-between;
+.sectionBody{max-width:@max-pcW;width:@max-pcW;margin:0 auto;display:flex;justify-content:space-between;overflow:hidden;
   .sectionItem{
     .sectionLeft{float:left;width:24px;height:24px;background-image:url('../../../assets/login/icons.png');margin-right: 10px;}
     .sectionImg2{background-position: 0 -24px;}

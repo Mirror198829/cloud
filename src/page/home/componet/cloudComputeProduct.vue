@@ -116,7 +116,7 @@ export default {
 
 <style  scoped lang="less">
 @import '../../../less/index.less';
-.sectionHead{padding:50px 15px;background-color:#fff;}
+.sectionHead{padding:50px 15px;}
 .productBodyPc{background-color:#fff;}
 .productBodyPc .productNavTabs,.productBodyPc .productLst{max-width:@max-pcW;width:@max-pcW;margin:0 auto;box-sizing:border-box;overflow:hidden;background-color:#fff;}
 .productBodyPc .productNavTabs{display:flex;}
