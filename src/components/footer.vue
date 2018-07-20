@@ -42,6 +42,17 @@
           </li>
         </ul>
       </div>
+      <div class="footerCopyright">
+        <div class="footerCopyrightTop clearfix">
+          <div class="footerCoypightRight">法律声明 | 隐私政策声明 | 举报不良信息 | 可接受的使用政策 华为云用户协议</div>
+          <div class="footerCoypightLeft">版权所有 © 华为软件技术有限公司 2018 保留一切权利 苏ICP备17040376号-5 苏B2-20130048号</div>
+        </div>
+        <div class="footerCopyrightBottom">
+          <img src="../assets/home/cy.png" height="18" width="18"/>
+          <img src="../assets/home/register.png" height="18" width="18"/>
+          <span class="footerCopyrightBottomTxt">苏公网安备 3211402010008号</span>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -106,13 +117,17 @@ export default {
 .subNavRightItem{font-weight:400;font-size:16px;color:@foot-color;margin-bottom:20px;
   .subNavIcon{font-size:25px;margin-right:7px;position:relative;top:2px;}
 }
+.footerCopyright{margin-top:55px;}
+.footerCopyrightTop{color:@foot-color;font-size:12px;margin-bottom:10px;}
+.footerCoypightRight{float:right;}
+.footerCoypightLeft{float:left;}
+.footerCopyrightBottomTxt{font-size:12px;color:@foot-color;position:relative;top:-3px;}
 // screen >= 1200
 @media screen and (min-width:1200px){
 
 }
 // 1200>= screen >=992
 @media screen and (max-width:1200px){
-  .footerInfo{background-color:blue}
   .footerMain{width:90%;}
   .footerIcon{margin-right:0;}
   .footerTxt{display:block;
@@ -126,10 +141,13 @@ export default {
     .subNavItemO{float: left;margin-left:20px;}
     p{font-size:14px;color:@foot-color;padding:2px 0}
   }
+  .footerCopyrightTop{text-align:center;}
+  .footerCoypightRight{float:none;margin-bottom:15px;}
+  .footerCoypightLeft{float:none;}
+  .footerCopyrightBottom{text-align:center;}
 }
 
 @media screen and (max-width:992px){
-  .footerInfo{background-color:red}
   .footerServicItem{width:calc(100% / 3);margin-bottom:40px;
     &:nth-child(n + 4){margin-bottom:0px;}
   }
@@ -141,10 +159,10 @@ export default {
       img{display:none;}
     }
   }
+  .footerCopyright{margin-top:40px;}
 }
 
 @media screen and (max-width:768px){
-  .footerInfo{background-color:green}
   .footerServicItem{width:calc(100% / 3);margin-bottom:20px;}
   .footerIcon{font-size:24px;}
   .footerTxt{
@@ -158,6 +176,8 @@ export default {
   .subNavRightItem{font-weight:400;font-size:12px;color:@foot-color;margin-bottom:20px;
     .subNavIcon{font-size:14px;margin-right:7px;position:relative;top:2px;}
   }
+  .footerCoypightRight{display:none;}
+  .footerCopyright{margin-top:10px;}
 }
 
 @media screen and (max-width:480px){
