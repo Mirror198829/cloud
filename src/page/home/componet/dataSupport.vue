@@ -187,13 +187,13 @@ export default {
 .sectionBg{background:url('../../../assets/login/support.png') no-repeat;height:450px;background-size: cover;width:100%}
 .sectionBody{max-width:@max-pcW;width:@max-pcW;margin:0 auto;display:flex;justify-content:space-between;overflow:hidden;
   .sectionItem{
-    .sectionLeft{float:left;width:24px;height:24px;background-image:url('../../../assets/login/icons.png');margin-right: 10px;}
+    .sectionLeft{float:left;width:24px;height:24px;background-image:url('../../../assets/login/icons.png');margin-right: 10px;position: relative;top:10px;}
     .sectionImg2{background-position: 0 -24px;}
     .sectionImg3{background-position: 0 -48px;}
     .sectionImg4{background-position: 0 -72px;}
     .sectionRight{float:left;
       .numberInit{display:none;}
-      .numberGrow{color:@font-white;font-size:40px;line-height:26px;height:30px;
+      .numberGrow{color:@font-white;font-size:40px;
         .unit{font-size:24px;}
       }
       .numberGrow1{width:265px;}
@@ -233,7 +233,6 @@ export default {
   .sectionBg{height:300px}
   .sectionBody{
     .sectionItem{
-      .sectionLeft{}
       .sectionRight{
         .numberGrow{
           .unit{font-size:16px;}
