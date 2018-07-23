@@ -24,3 +24,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 * 响应式布局
 * less
 * 国际化
+* element导航与路由路径匹配激活状态
+* 页面滑动到指定位置数字tween动画
+* mock数据
+* 左右整屏铺满布局
