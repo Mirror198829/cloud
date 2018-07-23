@@ -31,7 +31,7 @@
         <li class="menuHeaderRightItem">
           <lang-switch></lang-switch>
         <li class="menuHeaderRightItem hide">
-          <a>{{$t('message.console')}}</a>
+          <a href="#/consoleHome">{{$t('message.console')}}</a>
         </li>
         <li class="menuHeaderRightItem hide">
           <a>{{$t('message.doc')}}</a>
@@ -95,6 +95,10 @@ export default {
 .subMenuHide{display:none;}
 .headerLogo{float:left;position:relative;top:15px;margin:0 5px 0 20px;}
 .menuHeaderRightItem{float:left;padding: 0 10px;height:@header-height;line-height:@header-height;font-size:14px;}
+.menuHeaderRightItem a{color:@font-white;
+  &:hover{color:@theme-color;}
+}
+
 // screen >= 1200
 @media screen and (min-width:1200px){
 

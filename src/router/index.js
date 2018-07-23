@@ -1,11 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
-const Home = () => import('@/page/home/home')
-const Login = () => import('@/page/login/login')
-const HomePage = () => import('@/page/home/homePage')
-const ConsoleHome = () => import('@/page/console/consoleHome')
-
+import consoleRouter from './console.js'
 Vue.use(Router)
 
 export default new Router({
@@ -20,26 +15,22 @@ export default new Router({
     {
       path: '/login',
       name: 'Logine',
-      component: Login,
+      component: () => import('@/page/login/login'),
       meta: { title: '登陆页'}
     },
     {
       path: '/home',
       name: 'Home',
-      component: Home,
+      component: () => import('@/page/home/home'),
       children:[
         {
           path:'/homePage',
           name:'HomePage',
-          component:HomePage,
+          component:() => import('@/page/home/homePage'),
           meta: { title: '首页'},
         }
       ]
     },
-    {
-      path: '/consoleHome',
-      name: 'ConsoleHome',
-      component: ConsoleHome
-    }
+    ...consoleRouter
   ]
 })
