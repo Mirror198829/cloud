@@ -53,7 +53,6 @@ export default {
 .headerIcon{position:relative;top:4px;}
 .navItem{float:left;
   a{color:@font-white;display:block;height:@headerH;line-height:@headerH;padding:0 12px;font-size:14px;
-    &:hover{color:@theme-color;}
   }
 }
 // screen >= 1200

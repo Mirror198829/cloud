@@ -1,11 +1,11 @@
 <!-- 
 - Author:CaoJing
-- Date:2018/7/23
+- Date:2018/7/24
 - github:https://github.com/Mirror198829
 -->
 <template>
   <div>
-概览页面
+asfd
   </div>
 </template>
 
@@ -25,5 +25,21 @@ export default {
 }
 </script>
 
-<style scoped>
+<style  scoped lang="less">
+// screen >= 1200
+@media screen and (min-width:1200px){
+
+}
+// 1200>= screen >=992
+@media screen and (max-width:1200px){
+}
+
+@media screen and (max-width:992px){
+}
+
+@media screen and (max-width:768px){
+}
+
+@media screen and (max-width:480px){
+}
 </style>

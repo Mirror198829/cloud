@@ -10,7 +10,7 @@
             <i  class="subMenuRightArrow fa fa-chevron-right"></i>
           </li>
           <li class="subMenuItem show subMenuHide">
-            <a class="subMenuItemLink" href="#">{{$t('message.console')}}</a>
+            <a class="subMenuItemLink" href="#/consoleOverview">{{$t('message.console')}}</a>
           </li>
           <li class="subMenuItem show subMenuHide">
             <a class="subMenuItemLink" href="#">{{$t('message.doc')}}</a>
@@ -31,7 +31,7 @@
         <li class="menuHeaderRightItem">
           <lang-switch></lang-switch>
         <li class="menuHeaderRightItem hide">
-          <a href="#/consoleHome">{{$t('message.console')}}</a>
+          <a href="#/consoleOverview">{{$t('message.console')}}</a>
         </li>
         <li class="menuHeaderRightItem hide">
           <a>{{$t('message.doc')}}</a>

@@ -1,6 +1,6 @@
 <!-- 
 - Author:CaoJing
-- Date:2018/7/23
+- Date:2018/7/24
 - github:https://github.com/Mirror198829
 -->
 <template>
@@ -33,11 +33,9 @@
           </el-menu-item>
         </el-menu>
       </el-aside>
-      <el-container>
-        <el-main>
-          <router-view/>
-        </el-main>
-      </el-container>
+      <el-main class="consoleMain">
+        <router-view/>
+      </el-main>
     </el-container>
   </div>
 </template>
@@ -51,7 +49,6 @@ export default {
   },
   data () {
     return {
-      menuActive:'1',
       isCollapse:false,
       asideW:200
     }
@@ -60,9 +57,21 @@ export default {
     collapse(){
       this.isCollapse = !this.isCollapse
       this.asideW = this.isCollapse ? 65 : 200     
+    },
+    getWindowW(){
+      let windowW = $(window).width()   //获取窗口大小
+      if(windowW < 1200){    //小于1200px时，左侧栏只有收缩状态
+        this.isCollapse = true
+        this.asideW = 65
+      }
     }
   },
-  mounted(){},
+  mounted(){
+    this.getWindowW()
+    window.addEventListener('resize', () => {
+      this.getWindowW()
+    }, false)
+  },
   created(){}
 }
 </script>
@@ -70,7 +79,7 @@ export default {
 @import '../../less/index.less';
 #consolePage .el-header {height:@headerH;}
 #consolePage .el-aside {background-color:@base-color;} 
-#consolePage .el-main {background-color: #E9EEF3;height: calc(100vh - @headerH);}
+#consolePage .el-main {background-color: #fff;height: calc(100vh - @headerH);}
 #consolePage .el-menu-item.is-active{background-color:@theme-color !important;color:@font-white;}
 </style>
 <style  scoped lang="less">
@@ -86,6 +95,7 @@ export default {
 }
 // 1200>= screen >=992
 @media screen and (max-width:1200px){
+  .collapseBtn{display:none}
 }
 
 @media screen and (max-width:992px){
