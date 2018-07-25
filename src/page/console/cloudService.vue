@@ -1,6 +1,6 @@
 <!-- 
 - Author:CaoJing
-- Date:2018/7/2
+- Date:2018/7/25
 - github:https://github.com/Mirror198829
 -->
 <template>
@@ -36,18 +36,16 @@
           <div class="sectionBox"  v-for="(item,key) in 10">
             <h6>亚太东北1（东京）</h6>
             <div class="sectionBoxBody">
-              <div class="resourceInfo clearfix">
-                <div class="resourceLeftSide">
-                  
-                </div>
+              <div class="resourceInfo">
+                <div class="resourceLeftSide">云服务器<span class="rscTotal">0</span></div>
                 <ul class="resourceStatusLst">
-                  <li></li>
+                  <li class="statusItem" v-for="(item,key) in status"><i class="statusIcon"></i>{{item.title}}<span class="statusNum">{{item.num}}</span></li>
                 </ul>
               </div>
-              <div>
-                <span>磁盘0</span>
-                <span>快照 0GB/0</span>
-                <span>镜像0</span>
+              <div class="rscFooter">
+                <span class="rscFooterItem">磁盘0</span>
+                <span class="rscFooterItem">快照 0GB/0</span>
+                <span class="rscFooterItem">镜像0</span>
               </div>
             </div>
           </div>
@@ -65,6 +63,7 @@ export default {
     return {
       caseLst:[{title:'总数量',num:3},{title:'运行中',num:4},{title:'即将过期',num:1},{title:'已过期',num:8}],
       summaryLst:[{title:'总数量',num:3},{title:'总数量',num:10}],
+      status:[{title:'运行中',num:0},{title:'近期创建',num:0},{title:'即将过期',num:0},{title:'已过期',num:0}]
     }
   },
   methods:{
@@ -82,12 +81,11 @@ export default {
 @border-color:#dddddd;
 .rightSide{width:@right-side-width;float:right;background-color:red}
 .leftSide{width:calc(100% - @right-side-width - @boundary-width);float:left;}
-.section{margin-bottom:@boundary-width;}
 .sectionTitle{text-indent: 8px;border-left: 2px solid @theme-color;margin:8px 0;font-weight: 400;}
-.sectionBox{border:1px solid @border-color;box-sizing:border-box;width:calc((100% - @boundary-width) / 2);float:left;
-  h6{font-weight:400;background-color:#f9f9f9;height:36px;line-height: 36px;text-align:center;font-size:14px;}
+.sectionBox{border:1px solid @border-color;box-sizing:border-box;width:calc((100% - @boundary-width) / 2);float:left;margin-bottom:@boundary-width;
+  h6{font-weight:400;background-color:#f9f9f9;height:36px;line-height: 36px;text-align:left;font-size:14px;}
   &:first-child{margin-right:@boundary-width}
-  .sectionBoxBody{padding:5px;}
+  .sectionBoxBody{padding:5px 10px;}
 }
 .caseItem{float:left;width:calc(100% / 4);box-sizing:border-box;border-right: 1px solid @border-color;
   .caseItemTitle{font-weight:400;text-align:center;font-size:14px;margin-bottom:5px;}
@@ -105,6 +103,18 @@ export default {
 .summaryItem:last-child{border-right:0;}
 .unit{color:#CCC;font-size:25px;}
 #myResource .sectionBox:nth-child(2n+1){margin-right:@boundary-width;}
+.resourceInfo{border-bottom:1px dashed @border-color;display: flex;height:115px;padding:15px 0}
+.resourceLeftSide,.resourceStatusLst{width:100%;height:100%;box-sizing:border-box;padding:0 20px;}
+.resourceLeftSide{border-right:1px dashed @border-color;line-height:115px;font-size:14px;color:#333;}
+.rscTotal{color:#09C;font-size:30px;margin-left:20px;}
+.rscFooter{padding:10px 0 5px;display:flex;}
+.rscFooterItem{flex:1;text-align:center;font-size: 14px;color:#999999}
+.statusItem{font-size:14px;padding:5px 0}
+.statusIcon{display:inline-block;width:12px;height:12px;border-radius: 100%;background-color:#35cd03;margin-right:10px;position: relative;top:1px;}
+.statusNum{margin-left:10px;}
+.resourceStatusLst .statusItem:nth-child(2) .statusIcon{background-color:#999999}
+.resourceStatusLst .statusItem:nth-child(n+3) .statusIcon{background-color:#fd0202}
+.resourceStatusLst .statusItem:nth-child(n+3) .statusNum{color:#fd0202}
 // 1200>= screen >=992
 @media screen and (max-width:1200px){
   #consoleService{}
