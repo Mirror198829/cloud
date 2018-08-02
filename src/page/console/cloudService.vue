@@ -83,7 +83,7 @@ export default {
 .leftSide{width:calc(100% - @right-side-width - @boundary-width);float:left;}
 .sectionTitle{text-indent: 8px;border-left: 2px solid @theme-color;margin:8px 0;font-weight: 400;}
 .sectionBox{border:1px solid @border-color;box-sizing:border-box;width:calc((100% - @boundary-width) / 2);float:left;margin-bottom:@boundary-width;
-  h6{font-weight:400;background-color:#f9f9f9;height:36px;line-height: 36px;text-align:left;font-size:14px;}
+  h6{font-weight:400;background-color:#f9f9f9;height:36px;line-height: 36px;text-align:center;font-size:14px;}
   &:first-child{margin-right:@boundary-width}
   .sectionBoxBody{padding:5px 10px;}
 }
