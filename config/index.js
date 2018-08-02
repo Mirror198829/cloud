@@ -43,7 +43,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/cloud-exhibition/dist/',
+    assetsPublicPath: '/cloud/dist/',
 
     /**
      * Source Maps
