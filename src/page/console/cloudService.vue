@@ -1,10 +1,10 @@
 <!-- 
 - Author:CaoJing
-- Date:2018/7/25
+- Date:2018/8/9
 - github:https://github.com/Mirror198829
 -->
 <template>
-  <div id="consoleService" class="clearfix">
+  <div id="consoleService">
     <div class='leftSide'>
       <div class="section">
         <h5 class="sectionTitle">综述</h5>
@@ -52,24 +52,80 @@
         </div>
       </div>
     </div>
-    <div class="rightSide">asdf</div>
+    <div class="middleLine"></div>
+    <div class="rightSide">
+      <div class="section">
+        <h5 class="sectionTitle">资源概览</h5>
+        <a class="summary">
+          <i class="fa fa-bar-chart sumIcon"></i>
+          <p class="sumTitle">资源概览</p>
+        </a>
+      </div>
+      <div class="section">
+        <h5 class="sectionTitle">常用操作</h5>
+        <div class="sectionBody clearfix">
+          <ul class="operateWrap">
+            <li class="operateItem" v-for="(item,key) in operateLst">{{item}}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="section">
+        <h5 class="sectionTitle">重要提醒</h5>
+        <div class="sectionBody clearfix">
+          <div class="noticeWrap">
+            <i class="fa fa-question-circle-o"></i>
+            <div>怎么样才能做好云上运维？助力运维同学“不背锅”！ECS主动运维能力升级，助力用户获得稳定、开放、弹性、透明的运维体验</div>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <h5 class="sectionTitle">近期重要功能</h5>
+        <div class="sectionBody" style="padding: 15px 10px;background:#f9f9f9">
+          <ul class="importFun">
+            <h3>2018</h3>
+            <li class="funItem" v-for="(item,key) in importFunData">
+              <div class="funItemLeft">
+                <i class="funItemIcon"></i>
+                <div class="funItemLine"></div>
+              </div>
+              <div class="funItemRight">
+                <div>
+                  <i class="fa fa-link"></i>
+                  <span v-if="key < 6">【新功能】</span>
+                  <span>{{item.title}}</span>
+                  <i  v-if="key < 6" class="new">New</i>
+                </div>
+                <p class="funItemRightTime">{{item.time}}</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import importFunData from '../../mock/importFun.js'
 export default {
   name: '',
   data () {
     return {
       caseLst:[{title:'总数量',num:3},{title:'运行中',num:4},{title:'即将过期',num:1},{title:'已过期',num:8}],
       summaryLst:[{title:'总数量',num:3},{title:'总数量',num:10}],
-      status:[{title:'运行中',num:0},{title:'近期创建',num:0},{title:'即将过期',num:0},{title:'已过期',num:0}]
+      status:[{title:'运行中',num:0},{title:'近期创建',num:0},{title:'即将过期',num:0},{title:'已过期',num:0}],
+      operateLst:['续费管理','设置','待处理事件','查看特权'],
+      importFunData:[]
     }
   },
   methods:{
-
+    getImportFunData(){
+      this.importFunData = importFunData.data
+    }
   },
-  mounted(){},
+  mounted(){
+    this.getImportFunData()
+  },
   created(){}
 }
 </script>
@@ -79,11 +135,15 @@ export default {
 @boundary-width:20px;
 @right-side-width:380px;
 @border-color:#dddddd;
-.rightSide{width:@right-side-width;float:right;background-color:red}
-.leftSide{width:calc(100% - @right-side-width - @boundary-width);float:left;}
+@sub-theme:#f9f9f9;
+@fun-color:#d8d8d8;
+#consoleService{width:100%;display:flex;}
+.middleLine{width:1px;background-color:@border-color;margin:0 20px;}
+.rightSide{flex:2}
+.leftSide{flex:7}
 .sectionTitle{text-indent: 8px;border-left: 2px solid @theme-color;margin:8px 0;font-weight: 400;}
 .sectionBox{border:1px solid @border-color;box-sizing:border-box;width:calc((100% - @boundary-width) / 2);float:left;margin-bottom:@boundary-width;
-  h6{font-weight:400;background-color:#f9f9f9;height:36px;line-height: 36px;text-align:center;font-size:14px;}
+  h6{font-weight:400;background-color:@sub-theme;height:36px;line-height: 36px;text-align:center;font-size:14px;}
   &:first-child{margin-right:@boundary-width}
   .sectionBoxBody{padding:5px 10px;}
 }
@@ -115,16 +175,47 @@ export default {
 .resourceStatusLst .statusItem:nth-child(2) .statusIcon{background-color:#999999}
 .resourceStatusLst .statusItem:nth-child(n+3) .statusIcon{background-color:#fd0202}
 .resourceStatusLst .statusItem:nth-child(n+3) .statusNum{color:#fd0202}
+//右边样式 
+.summary{display:inline-block;padding:7px 15px;border:1px solid @border-color;text-align:center;background-color:@sub-theme;margin:8px 0}
+.sumIcon{color:@theme-color;font-size:20px;}
+.sumTitle{font-size:13px;margin-top:5px;}
+.operateWrap{width:100%;display:flex;flex-wrap:wrap}
+.operateItem{width:calc( (100% - 15px)  / 2 );padding:5px 0;font-size:12px;text-align:center;background-color:@sub-theme;border:1px solid @border-color;box-sizing:border-box;margin:2px 0;margin-right:15px;cursor: pointer;
+  &:hover{background-color:#fff;}
+}
+.operateItem:nth-child(2n){margin-right:0;}
+.noticeWrap{display:flex;padding:10px;border:1px solid @border-color;background-color:#F2FFEA;color:#090;font-size:12px;
+  i{font-size:16px;margin-right:5px;}
+}
+.importFun{background-color:@sub-theme;max-height:500px;overflow: auto;
+  h3{font-size:12px;color:#999;font-weight:400;}
+  .funItem{display:flex;margin-bottom:10px;cursor: pointer;
+    .funItemLeft{display:flex;text-align:center;flex-direction:column;margin-right:10px;
+      .funItemIcon{display:block;width:10px;height:10px;border-radius:100%;background-color:@fun-color;margin-bottom:2px;}
+      .funItemLine{width:1px;flex:1;background-color:@fun-color;position:relative;left:4px;}
+    }
+    .funItemRight{flex:1;font-size:12px;color:#4f5357;
+      .funItemRightTime{color:#999;margin-top:7px;}
+      .new{display:inline-block;padding:1px 5px;background-color:#f4542a;color:#fff;border-radius:4px;margin-left:7px;}
+    }
+    &:hover .funItemIcon{background-color:@theme-color;}
+    &:hover .funItemRight{color:@theme-color;
+        .funItemRightTime{color:@theme-color;}
+    }
+  }
+  .funItem:last-child{margin-bottom:0px;}
+}
 // 1200>= screen >=992
 @media screen and (max-width:1200px){
-  #consoleService{}
-  .leftSide{float:none;width:100%}
-  .rightSide{float:none;width:100%;}
+  #consoleService{display:block}
+  .middleLine{display:none;}
+  .leftSide{width:100%}
+  .rightSide{width:100%;}
 }
 
 @media screen and (max-width:992px){
   #consoleService{}
-  .sectionBox{float:none;width:100%}
+  .sectionBox{width:100%}
   .sectionBox:first-child{margin-bottom:@boundary-width;}
 }
 
