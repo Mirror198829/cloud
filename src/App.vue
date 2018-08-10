@@ -18,4 +18,5 @@ html,body,#app{height:100%;}
 ul,li{list-style: none;}
 a{text-decoration: none;}
 body{background-color:#373d41}
+.el-main{padding:0;}
 </style>

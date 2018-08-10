@@ -33,19 +33,19 @@
       <div class="section" id="myResource">
         <h5 class="sectionTitle">我的资源</h5>
         <div class="sectionBody clearfix">
-          <div class="sectionBox"  v-for="(item,key) in 10">
-            <h6>亚太东北1（东京）</h6>
+          <div class="sectionBox"  v-for="(item,key) in resourceData">
+            <h6>{{item.title}}（{{item.region}}）</h6>
             <div class="sectionBoxBody">
               <div class="resourceInfo">
-                <div class="resourceLeftSide">云服务器<span class="rscTotal">0</span></div>
+                <div class="resourceLeftSide">云服务器<span class="rscTotal">{{item.num}}</span></div>
                 <ul class="resourceStatusLst">
-                  <li class="statusItem" v-for="(item,key) in status"><i class="statusIcon"></i>{{item.title}}<span class="statusNum">{{item.num}}</span></li>
+                  <li class="statusItem" v-for="(statu,key) in item.status"><i class="statusIcon"></i>{{statu.title}}<span class="statusNum">{{item.num}}</span></li>
                 </ul>
               </div>
               <div class="rscFooter">
-                <span class="rscFooterItem">磁盘0</span>
-                <span class="rscFooterItem">快照 0GB/0</span>
-                <span class="rscFooterItem">镜像0</span>
+                <span class="rscFooterItem">磁盘 {{item.disk}}</span>
+                <span class="rscFooterItem">快照 {{item.cpu}}GB/100</span>
+                <span class="rscFooterItem">镜像 {{item.image}}</span>
               </div>
             </div>
           </div>
@@ -56,7 +56,7 @@
     <div class="rightSide">
       <div class="section">
         <h5 class="sectionTitle">资源概览</h5>
-        <a class="summary">
+        <a class="summary" href="#/dashBoard">
           <i class="fa fa-bar-chart sumIcon"></i>
           <p class="sumTitle">资源概览</p>
         </a>
@@ -107,6 +107,7 @@
 
 <script>
 import importFunData from '../../mock/importFun.js'
+import resourceData from '../../mock/resource.js'
 export default {
   name: '',
   data () {
@@ -115,16 +116,21 @@ export default {
       summaryLst:[{title:'总数量',num:3},{title:'总数量',num:10}],
       status:[{title:'运行中',num:0},{title:'近期创建',num:0},{title:'即将过期',num:0},{title:'已过期',num:0}],
       operateLst:['续费管理','设置','待处理事件','查看特权'],
-      importFunData:[]
+      importFunData:[],
+      resourceData:[]
     }
   },
   methods:{
     getImportFunData(){
       this.importFunData = importFunData.data
+    },
+    getResourceData(){
+      this.resourceData = resourceData.data
     }
   },
   mounted(){
     this.getImportFunData()
+    this.getResourceData()
   },
   created(){}
 }
@@ -137,11 +143,12 @@ export default {
 @border-color:#dddddd;
 @sub-theme:#f9f9f9;
 @fun-color:#d8d8d8;
-#consoleService{width:100%;display:flex;}
+#consoleService{width:100%;display:flex;padding:20px;box-sizing:border-box;background-color:#fff;}
 .middleLine{width:1px;background-color:@border-color;margin:0 20px;}
 .rightSide{flex:2}
 .leftSide{flex:7}
-.sectionTitle{text-indent: 8px;border-left: 2px solid @theme-color;margin:8px 0;font-weight: 400;}
+.section{margin-bottom:10px;}
+.sectionTitle{text-indent: 8px;border-left: 2px solid @theme-color;margin-bottom:8px;font-weight: 400;}
 .sectionBox{border:1px solid @border-color;box-sizing:border-box;width:calc((100% - @boundary-width) / 2);float:left;margin-bottom:@boundary-width;
   h6{font-weight:400;background-color:@sub-theme;height:36px;line-height: 36px;text-align:center;font-size:14px;}
   &:first-child{margin-right:@boundary-width}
@@ -176,7 +183,10 @@ export default {
 .resourceStatusLst .statusItem:nth-child(n+3) .statusIcon{background-color:#fd0202}
 .resourceStatusLst .statusItem:nth-child(n+3) .statusNum{color:#fd0202}
 //右边样式 
-.summary{display:inline-block;padding:7px 15px;border:1px solid @border-color;text-align:center;background-color:@sub-theme;margin:8px 0}
+.summary{display:inline-block;padding:7px 15px;border:1px solid @border-color;text-align:center;background-color:@sub-theme;margin:8px 0;cursor: pointer;
+  &:hover{background-color:#fff;}
+  .sumTitle{color:@theme-color}
+}
 .sumIcon{color:@theme-color;font-size:20px;}
 .sumTitle{font-size:13px;margin-top:5px;}
 .operateWrap{width:100%;display:flex;flex-wrap:wrap}

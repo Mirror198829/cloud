@@ -16,6 +16,11 @@ export default [{
         path: '/gameBuy',
         component: () => import ('@/page/console/gameBuy'),
         meta: { title: '游戏遁' }
+      },
+      {
+        path: '/dashBoard',
+        component: () => import ('@/page/console/dashBoard'),
+        meta: { title: 'dashBoard' }
       }
     ]
   }

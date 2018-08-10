@@ -31,6 +31,10 @@
             <i class="el-icon-service"></i>
             <span slot="title">游戏遁</span>
           </el-menu-item>
+          <el-menu-item index="/dashBoard">
+            <i class="fa fa-bell"></i>&nbsp&nbsp
+            <span slot="title">dashBoard</span>
+          </el-menu-item>
         </el-menu>
       </el-aside>
       <el-main class="consoleMain">
@@ -79,12 +83,12 @@ export default {
 @import '../../less/index.less';
 #consolePage .el-header {height:@headerH;}
 #consolePage .el-aside {background-color:@base-color;} 
-#consolePage .el-main {background-color: #fff;height: calc(100vh - @headerH);}
+#consolePage .el-main {height: calc(100vh - @headerH);}
 #consolePage .el-menu-item.is-active{background-color:@theme-color !important;color:@font-white;}
 </style>
 <style  scoped lang="less">
 @import '../../less/index.less';
-#consolePage{background-color:#fff;height:100%}
+#consolePage{height:100%}
 .consoleMenu{background-color:@base-color;border-right-width:0 !important}
 .rotateIcon{transform:rotate(90deg);}
 .collapseBtn{color:#aeb9c2;text-align:center;background-color:#4a5064;padding:8px 0;cursor: pointer;}

@@ -8,6 +8,8 @@ import axios from 'axios'
 import NProgress from 'nprogress'
 import i18n from './i18n/i18n.js'
 import $ from 'jquery'
+import ECharts from 'vue-echarts'
+
 
 import 'nprogress/nprogress.css'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -18,6 +20,7 @@ import 'font-awesome/css/font-awesome.min.css'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)
+Vue.component('chart', ECharts)
 
 axios.interceptors.request.use(
 	config => {
