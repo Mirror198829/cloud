@@ -1,6 +1,6 @@
 <!-- 
 - Author:CaoJing
-- Date:2018/8/10
+- Date:2018/8/13
 - github:https://github.com/Mirror198829
 -->
 <template>
@@ -10,26 +10,40 @@
       <div class="dashTop">
         <div class="dashLeft">
           <div class="dashGauge">
-            <li class="dashGaugeItem">
+            <li class="dashGaugeItem chartSection">
               <h1 class="chartTitle">Your Business</h1>
               <div class="chartWrap">
                 <chart :options="gauge1" class="chart" style="width:100%;height:100%"></chart>
               </div>
             </li>
-            <li class="dashGaugeItem">
+            <li class="dashGaugeItem chartSection">
               <h1 class="chartTitle">Your Business</h1>
               <div class="chartWrap">
-                
+                <chart :options="gauge1" class="chart" style="width:100%;height:100%"></chart>
               </div>
             </li>
           </div>
-          <div class="dashProgress"></div>
+          <ul class="dashProgress">
+            <li class="progressItem" v-for="(item,key) in progress">
+              <i class="progressIcon fa" :class="item.icon"></i>
+              <span class="progressTitle">{{item.title}}</span>
+              <div class="progress">
+                <div :style="'width:' + item.percent*10 + '%'"></div>
+                <span class="percent">{{item.percent}}/10</span>
+              </div>
+            </li>
+          </ul>
         </div>
-        <div class="dashRight"></div>
+        <div class="dashRight chartSection">
+          <h1 class="chartTitle">Latest Activities</h1> 
+          <div class="chartWrap">
+                <chart :options="activity" class="chart" style="width:100%;height:100%"></chart>
+          </div>
+        </div>
       </div>
       <div class="dashBottom">
         <li v-for="(item,key) in 4" class="block">
-          <chart :options="polar" style="width:100%;height:100%"></chart>
+          
         </li>
       </div>
     </main>
@@ -37,98 +51,34 @@
 </template>
 
 <script>
+import getGauge from  '../../mock/dashboard/gauge.js'
+import getActivity from '../../mock/dashboard/activity.js'
+import getProgress from '../../mock/dashboard/progress.js'
 export default {
   name: '',
   data () {
-    let data = []
-    for (let i = 0; i <= 360; i++) {
-        let t = i / 180 * Math.PI
-        let r = Math.sin(2 * t) * Math.cos(2 * t)
-        data.push([r, i])
-    }
     return {
-      polar: {
-        title: {
-          text: '极坐标双数值轴'
-        },
-        legend: {
-          data: ['line']
-        },
-        polar: {
-          center: ['50%', '54%']
-        },
-        tooltip: {
-          trigger: 'axis',
-          axisPointer: {
-            type: 'cross'
-          }
-        },
-        angleAxis: {
-          type: 'value',
-          startAngle: 0
-        },
-        radiusAxis: {
-          min: 0
-        },
-        series: [
-          {
-            coordinateSystem: 'polar',
-            name: 'line',
-            type: 'line',
-            showSymbol: false,
-            data: data
-          }
-        ],
-        animationDuration: 2000
-      },
-      gauge1: {
-          tooltip : {
-              formatter: "{a} <br/>{b} : {c}%"
-          },
-          toolbox: {
-              show:false
-          },
-          series: [
-              {
-                  name: '业务指标',
-                  type: 'gauge',
-                  radius:'100%',
-                  min:0,
-                  max:10,
-                  startAngle:180,
-                  endAngle:0,
-                  axisLine:{
-                    show:false,
-                    lineStyle:{
-                       color:[[0.2, '#f35235'], [0.4, '#efc942'], [0.6, '#3cd681'], [1, '#green']],
-                       width:13
-                    }                  
-                  },
-                  splitLine:{
-                    show:false
-                  },
-                  axisTick:{
-                    show:false
-                  },
-                  axisLabel:{
-                    show:false
-                  },
-                  itemStyle:{
-                    color:'#1a1a1a'
-                  },
-                  detail: {
-                    show:false
-                  },
-                  data: [{value: 3}]
-              }
-          ]
-      }
+      gauge1:{},
+      activity:{},
+      progress:[]
     }
   },
   methods:{
-
+    getData(){
+      this.gauge1 =  getGauge()
+      this.activity =  getActivity()
+      this.progress = getProgress().data
+    },
+    setIntervalData(){
+      setInterval(()=>{
+        this.getData()
+      },500)
+    }
   },
-  mounted(){},
+  mounted(){
+    this.getData()
+    this.setIntervalData()
+  },
   created(){}
 }
 </script>
@@ -143,14 +93,26 @@ main{padding:@boundary;}
 .dashLeft{flex:2;margin-right: @boundary;display:flex;flex-direction:column;}
 .dashRight{flex:3;background-color:#fff;}
 .dashGauge{flex:2;margin-bottom:@boundary;display:flex}
-.dashGaugeItem{margin-right:@boundary;background-color:#fff;flex:1;display:flex;flex-direction:column;}
+.dashGaugeItem{margin-right:@boundary;background-color:#fff;flex:1;}
 .dashGaugeItem:last-child{margin-right:0}
 .dashProgress{flex:1.8;background-color:#fff}
 .dashBottom{display:flex}
 .block{margin-right:@boundary;flex:1;height:350px;background-color:#fff;}
 .block:last-child{margin-right:0;}
-.chartTitle{font-size:12px;padding:10px;background-color:#fafafa;}
-.chartWrap{flex:1;}
+.chartSection{display:flex;flex-direction:column;
+  .chartTitle{font-size:12px;padding:10px;background-color:#fafafa;}
+  .chartWrap{flex:1;padding:10px;box-sizing:border-box;}
+}
+.dashProgress{box-sizing: border-box;padding:20px 15px;display:flex;flex-direction:column;
+  .progressItem{flex:1;padding:10px;display:flex;align-items: center;
+    .progressIcon{margin-right:5px;width:20px;}
+    .progressTitle{margin-right:25px;font-size:14px;font-weight: 700;width:90px;}
+    .progress{position:relative;flex:1;background-color: #f2f2f2;height:8px;
+      div{height:100%;background:linear-gradient(to right,#ee4e3e,#cd6049,#31ba8e,#28c193);}
+      .percent{position: absolute;right:0;top:-18px;font-size:13px;color:#566771}
+    }
+  }
+}
 
 // screen >= 1200
 @media screen and (min-width:1200px){
@@ -158,6 +120,9 @@ main{padding:@boundary;}
 }
 // 1200>= screen >=992
 @media screen and (max-width:1200px){
+  // .dashTop{display:block;}
+  // .dashLeft{width:100%;}
+  // .dashRight{width:100%}
 }
 
 @media screen and (max-width:992px){
