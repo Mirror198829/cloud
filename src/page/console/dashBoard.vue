@@ -72,7 +72,7 @@ export default {
     setIntervalData(){
       setInterval(()=>{
         this.getData()
-      },500)
+      },700)
     }
   },
   mounted(){
@@ -108,7 +108,7 @@ main{padding:@boundary;}
     .progressIcon{margin-right:5px;width:20px;}
     .progressTitle{margin-right:25px;font-size:14px;font-weight: 700;width:90px;}
     .progress{position:relative;flex:1;background-color: #f2f2f2;height:8px;
-      div{height:100%;background:linear-gradient(to right,#ee4e3e,#cd6049,#31ba8e,#28c193);}
+      div{height:100%;background:linear-gradient(to right,#ee4e3e,#cd6049,#31ba8e,#28c193);width:0;transition:all .2s;}
       .percent{position: absolute;right:0;top:-18px;font-size:13px;color:#566771}
     }
   }
