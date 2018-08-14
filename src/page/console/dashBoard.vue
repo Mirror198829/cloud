@@ -42,8 +42,29 @@
         </div>
       </div>
       <div class="dashBottom">
-        <li v-for="(item,key) in 4" class="block">
-          sadfasdf
+        <li class="block chartSection">
+          <h1 class="chartTitle">Aesthetics</h1>
+          <div class="chartWrap">
+            <chart :options="bar" class="chart" style="width:100%;height:100%"></chart>
+          </div>
+        </li>
+        <li class="block chartSection">
+          <h1 class="chartTitle">Navigation</h1>
+          <div class="chartWrap">
+            <chart :options="pie" class="chart" style="width:100%;height:100%"></chart>
+          </div>
+        </li>
+        <li class="block chartSection">
+          <h1 class="chartTitle">Speed</h1>
+          <div class="chartWrap">
+            <chart :options="stack" class="chart" style="width:100%;height:100%"></chart>
+          </div>
+        </li>
+        <li class="block chartSection">
+          <h1 class="chartTitle">Searchbility</h1>
+          <div class="chartWrap">
+            <chart :options="line" class="chart" style="width:100%;height:100%"></chart>
+          </div>
         </li>
       </div>
     </main>
@@ -54,13 +75,21 @@
 import getGauge from  '../../mock/dashboard/gauge.js'
 import getActivity from '../../mock/dashboard/activity.js'
 import getProgress from '../../mock/dashboard/progress.js'
+import getBar from '../../mock/dashboard/bar.js'
+import getLine from '../../mock/dashboard/line.js'
+import getStack from '../../mock/dashboard/stack.js'
+import getPie from '../../mock/dashboard/pie.js'
 export default {
   name: '',
   data () {
     return {
       gauge1:{},
       activity:{},
-      progress:[]
+      progress:[],
+      bar:{},
+      line:{},
+      stack:{},
+      pie:{}
     }
   },
   methods:{
@@ -68,6 +97,10 @@ export default {
       this.gauge1 =  getGauge()
       this.activity =  getActivity()
       this.progress = getProgress().data
+      this.bar = getBar()
+      this.line = getLine()
+      this.stack = getStack()
+      this.pie = getPie()
     },
     setIntervalData(){
       setInterval(()=>{
@@ -101,7 +134,7 @@ main{padding:@boundary;}
 .block:last-child{margin-right:0;}
 .chartSection{display:flex;flex-direction:column;
   .chartTitle{font-size:12px;padding:10px;background-color:#fafafa;}
-  .chartWrap{flex:1;padding:10px;box-sizing:border-box;}
+  .chartWrap{flex:1;padding:15px;box-sizing:border-box;}
 }
 .dashProgress{box-sizing: border-box;padding:20px 15px;display:flex;flex-direction:column;
   .progressItem{flex:1;padding:10px;display:flex;align-items: center;
@@ -123,14 +156,15 @@ main{padding:@boundary;}
 .dashTop{display:block;}
 .dashLeft{width:100%;margin-bottom:@boundary;}
 .dashRight{width:100%;}
+.dashBottom{width:100%;flex-wrap:wrap;}
+.block{margin-right:@boundary;width:calc( ( 100% - @boundary ) / 2);}
+.block:nth-child(2n){margin-right:0}
+.block:nth-child(1){margin-bottom:20px;}
+.block:nth-child(2){margin-bottom:20px;}
 }
 
 @media screen and (max-width:992px){
-  .dashBottom{width:100%;flex-wrap:wrap;}
-  .block{margin-right:@boundary;width:calc( ( 100% - @boundary ) / 2);}
-  .block:nth-child(2n){margin-right:0}
-  .block:nth-child(1){margin-bottom:20px;}
-  .block:nth-child(2){margin-bottom:20px;}
+  
 }
 
 @media screen and (max-width:768px){
