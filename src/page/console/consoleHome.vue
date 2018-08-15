@@ -80,6 +80,7 @@ export default {
 }
 </script>
 <style lang="less">
+.el-main{padding:0 !important;}
 @import '../../less/index.less';
 #consolePage .el-header {height:@headerH;}
 #consolePage .el-aside {background-color:@base-color;} 
