@@ -12,6 +12,7 @@ function getBar() {
         data:['直接访问','邮件营销','联盟广告','Tv']
     },
     grid: {
+        show:true,
         left: '3%',
         right: '4%',
         bottom: '3%',

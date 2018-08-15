@@ -12,6 +12,7 @@ function getStack() {
         data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎','百度','谷歌','必应','其他']
     },
     grid: {
+        show:true,
         left: '3%',
         right: '4%',
         bottom: '3%',

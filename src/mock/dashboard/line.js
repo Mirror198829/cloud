@@ -9,6 +9,7 @@ function getLine() {
         data:['邮件营销','联盟广告','搜索引擎']
     },
     grid: {
+        show:true,
         left: '3%',
         right: '4%',
         bottom: '3%',

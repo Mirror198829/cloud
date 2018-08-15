@@ -13,13 +13,19 @@
             <li class="dashGaugeItem chartSection">
               <h1 class="chartTitle">Your Business</h1>
               <div class="chartWrap">
-                <chart :options="gauge1" class="chart" style="width:100%;height:100%"></chart>
+                <div class="gauHead">
+                  <span class="gauNum">{{gauge1.series[0].data[0].value}}</span>/10<i class="gauTag">Far</i>
+                </div>
+                <chart :options="gauge1" class="chart" style="width:100%;height:100%;position:relative;top:40px;"></chart>
               </div>
             </li>
             <li class="dashGaugeItem chartSection">
-              <h1 class="chartTitle">Your Business</h1>
+              <h1 class="chartTitle">Industry Average</h1>
               <div class="chartWrap">
-                <chart :options="gauge1" class="chart" style="width:100%;height:100%"></chart>
+                <div class="gauHead">
+                  <span class="gauNum" style="color:#1ebe8e;">{{gauge1.series[0].data[0].value}}</span>/10<i class="gauTag"  style="background-color:#1ebe8e;">Good</i>
+                </div>
+                <chart :options="gauge2" class="chart" style="width:100%;height:100%;position:relative;top:40px;"></chart>
               </div>
             </li>
           </div>
@@ -72,18 +78,20 @@
 </template>
 
 <script>
-import getGauge from  '../../mock/dashboard/gauge.js'
+import getGaugeOne from  '../../mock/dashboard/gauge.js'
 import getActivity from '../../mock/dashboard/activity.js'
 import getProgress from '../../mock/dashboard/progress.js'
 import getBar from '../../mock/dashboard/bar.js'
 import getLine from '../../mock/dashboard/line.js'
 import getStack from '../../mock/dashboard/stack.js'
 import getPie from '../../mock/dashboard/pie.js'
+import getGaugeTwo from '../../mock/dashboard/gauge2.js'
 export default {
   name: '',
   data () {
     return {
       gauge1:{},
+      gauge2:{},
       activity:{},
       progress:[],
       bar:{},
@@ -94,13 +102,14 @@ export default {
   },
   methods:{
     getData(){
-      this.gauge1 =  getGauge()
+      this.gauge1 = getGaugeOne()
       this.activity =  getActivity()
       this.progress = getProgress().data
       this.bar = getBar()
       this.line = getLine()
       this.stack = getStack()
       this.pie = getPie()
+      this.gauge2 = getGaugeTwo()
     },
     setIntervalData(){
       setInterval(()=>{
@@ -134,7 +143,7 @@ main{padding:@boundary;}
 .block:last-child{margin-right:0;}
 .chartSection{display:flex;flex-direction:column;
   .chartTitle{font-size:12px;padding:10px;background-color:#fafafa;}
-  .chartWrap{flex:1;padding:15px;box-sizing:border-box;}
+  .chartWrap{flex:1;padding:15px;box-sizing:border-box;position:relative;}
 }
 .dashProgress{box-sizing: border-box;padding:20px 15px;display:flex;flex-direction:column;
   .progressItem{flex:1;padding:10px;display:flex;align-items: center;
@@ -145,6 +154,10 @@ main{padding:@boundary;}
       .percent{position: absolute;right:0;top:-18px;font-size:13px;color:#566771}
     }
   }
+}
+.gauHead{position:absolute;text-align:center;top:15px;left:50%;transform:translateX(-50%);font-size:14px;
+  .gauNum{font-size:20px;color:#ff9900}
+  .gauTag{display:inline-block;color:#fff;padding:0px 5px;background-color:#ff9900;font-size:12px;border-radius:5px;margin-left:10px;}
 }
 
 // screen >= 1200

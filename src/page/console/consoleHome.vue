@@ -32,7 +32,7 @@
             <span slot="title">游戏遁</span>
           </el-menu-item>
           <el-menu-item index="/dashBoard">
-            <i class="fa fa-bell"></i>&nbsp&nbsp
+            <i class="fa fa-bar-chart"></i>&nbsp&nbsp
             <span slot="title">dashBoard</span>
           </el-menu-item>
         </el-menu>
