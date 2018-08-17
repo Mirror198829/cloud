@@ -1,10 +1,10 @@
 <!-- 
 - Author:CaoJing
-- Date:2018/7/24
+- Date:2018/8/17
 - github:https://github.com/Mirror198829
 -->
 <template>
-  <div>
+  <div id="conOverview">
 asfd
   </div>
 </template>
@@ -26,6 +26,7 @@ export default {
 </script>
 
 <style  scoped lang="less">
+#conOverview{background-color:#fff;height:100%;box-sizing:border-box;padding:20px;}
 // screen >= 1200
 @media screen and (min-width:1200px){
 

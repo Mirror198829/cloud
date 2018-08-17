@@ -14,7 +14,7 @@
               <h1 class="chartTitle">Your Business</h1>
               <div class="chartWrap">
                 <div class="gauHead">
-                  <span class="gauNum">{{gauge1.series[0].data[0].value}}</span>/10<i class="gauTag">Far</i>
+                  <span class="gauNum">{{num1}}</span>/10<i class="gauTag">Far</i>
                 </div>
                 <chart :options="gauge1" class="chart" style="width:100%;height:100%;position:relative;top:40px;"></chart>
               </div>
@@ -23,7 +23,7 @@
               <h1 class="chartTitle">Industry Average</h1>
               <div class="chartWrap">
                 <div class="gauHead">
-                  <span class="gauNum" style="color:#1ebe8e;">{{gauge1.series[0].data[0].value}}</span>/10<i class="gauTag"  style="background-color:#1ebe8e;">Good</i>
+                  <span class="gauNum" style="color:#1ebe8e;">{{num2}}</span>/10<i class="gauTag"  style="background-color:#1ebe8e;">Good</i>
                 </div>
                 <chart :options="gauge2" class="chart" style="width:100%;height:100%;position:relative;top:40px;"></chart>
               </div>
@@ -90,6 +90,8 @@ export default {
   name: '',
   data () {
     return {
+      num1:0,
+      num2:0,
       gauge1:{},
       gauge2:{},
       activity:{},
@@ -110,6 +112,8 @@ export default {
       this.stack = getStack()
       this.pie = getPie()
       this.gauge2 = getGaugeTwo()
+      this.num1 = this.gauge1.series[0].data[0].value
+      this.num2 = this.gauge2.series[0].data[0].value
     },
     setIntervalData(){
       setInterval(()=>{
