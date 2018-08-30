@@ -1,6 +1,6 @@
 <!-- 
 - Author:CaoJing
-- Date:2018/8/27
+- Date:2018/8/30
 - github:https://github.com/Mirror198829
 -->
 <template>
@@ -32,13 +32,7 @@
           <h1 class="subHeadTitle">我的项目</h1>
           <div class="subHeadBtn">创建项目</div>
         </div>
-        <div class="subBtnWrap">
-          <ul class="btnLst">
-            <li class="btnItem active">所有</li>
-            <li class="btnItem">我管理的</li>
-            <li class="btnItem">我参与的</li>
-          </ul>
-        </div>
+        <console-tab :tabLst="tabLst"></console-tab>
         <ul class="projectLst">
           <li class="projectItem" v-for="(item,key) in 9">
             <div class="prjItemLeft"></div>
@@ -65,14 +59,57 @@
         </ul>      
       </div>
     </div>
-    <div></div>
+    <div id='product'>
+      <h3 class="proTitle">已购商品</h3>
+      <console-tab :tabLst="productTabLst"></console-tab>
+      <div>
+        <el-table
+          stripe
+          border
+          :data="productLst"
+          style="width: 100%">
+          <el-table-column
+            label="产品名称"
+          >
+            <template slot-scope="scope">
+              <span style="color:#34d3f1">{{ scope.row.name }}</span>
+            </template>
+          </el-table-column>
+          <el-table-column
+            prop="date"
+            label="生效时间"
+          >
+          </el-table-column>
+          <el-table-column
+            prop="timeOut"
+            label="过期时间">
+          </el-table-column>
+          <el-table-column
+            prop="status"
+            label="状态">
+          </el-table-column>
+          <el-table-column
+            label="操作">
+            <template slot-scope="scope">
+              <i class="fa fa-edit tableIcon"></i>
+              <i class="fa fa-trash tableIcon"></i>
+            </template>
+          </el-table-column>
+        </el-table>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import getRes from '../../mock/overview/resource.js'
+import consoleTab from '@/page/console/components/consoleTab'
+import productData from '../../mock/overview/productLst.js'
 export default {
   name: '',
+  components:{
+    consoleTab
+  },
   data () {
     return {
       matterLst:[
@@ -81,7 +118,10 @@ export default {
         {icon:'fa-rmb',num:187,title:'待付款',color:'#34d3f1'},
         {icon:'fa-money',num:20,title:'优惠券',color:'#f25f6a'}
       ],
-      resLst:[]
+      resLst:[],
+      tabLst:['所有','我管理的','我参与的'],
+      productTabLst:['所有','有效','开通','过期'],
+      productLst:[]
     }
   },
   methods:{
@@ -91,19 +131,17 @@ export default {
   },
   mounted(){
     this.getRes()
-    setInterval(()=>{
-      this.getRes()
-    },1000)
+    this.productLst = productData.data
   },
   created(){}
 }
 </script>
 
 <style  scoped lang="less">
-@boundary:14px;
+@boundary:20px;
 @font-color:#a7a6ae;
 @gray-color:#ebebeb;
-#conOverview{background-color:#f7f4fa;height:100%;box-sizing:border-box;padding:20px;}
+#conOverview{background-color:#f7f4fa;min-height:100%;box-sizing:border-box;padding:20px;}
 #matter{
   display: flex;margin-bottom:@boundary;
   .matterItem{margin-right: @boundary;box-shadow: 1px 1px 1px 1px #ccc;flex:1;padding:15px 10px;background-color:#fff;
@@ -133,11 +171,11 @@ export default {
   @base-color:#95dfd8;
  .mainItem{padding:10px;
    .subHead{display:flex;justify-content:space-between;
-    .subHeadTitle{color:@font-color;font-weight: 400;font-size:18px;}
-    .subHeadBtn{border:1px solid @base-color;color:@base-color;padding:2px 10px;border-radius:15px;font-size:14px;}
+    .subHeadTitle{color:@font-color;font-weight: 400;font-size:14px;}
+    .subHeadBtn{border:1px solid @base-color;color:@base-color;padding:2px 10px;border-radius:15px;font-size:14px;font-weight:700;}
    }
  }
- .project{flex:3;margin-right:@boundary;background-color:#fff;
+ .project{flex:5;margin-right:@boundary;background-color:#fff;
    .projectLst{display:flex;flex-wrap:wrap;
       @bj-color:#f6f5fa;
       .projectItem{width:calc((100% - 2 *@boundary)  / 3);margin-right:@boundary;background-color:#fff;margin-bottom:@boundary;border:1px solid darken(@bj-color,5%);box-sizing:border-box;display:flex;
@@ -150,14 +188,7 @@ export default {
         }
       }
     }
-   .subBtnWrap{display:flex;margin:25px 0 15px;
-    .btnLst{display:flex;border-radius:5px;overflow:hidden;border:1px solid @base-color;
-      .btnItem{border-right:1px solid @base-color;color:@base-color;font-size:12px;padding:5px 20px;
-        &:last-child{border-right:0px;}
-        &.active{background-color:@base-color;color:#fff;}
-      }
-    }
-   }
+
  }
  .resource{flex:2;background-color:#fff;display:flex;flex-direction:column;
    .rscLst{display:flex;flex-direction:column;flex:1;margin-top:20px;
@@ -169,6 +200,12 @@ export default {
     }
    }
  }
+}
+#product{margin-top:@boundary;background-color:#fff;padding:10px;
+  .proTitle{font-weight:400;color:@font-color;font-size:14px;}
+  .tableIcon{font-size:16px;color:#34d3f1;
+    &:first-child{margin-left:10px;}
+  }
 }
 // screen >= 1200
 @media screen and (min-width:1200px){
