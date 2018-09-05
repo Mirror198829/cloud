@@ -4,10 +4,10 @@ import consoleRouter from './console.js'
 Vue.use(Router)
 
 export default new Router({
+  //mode:'history',
   scrollBehavior (to, from, savedPosition) {
     return { x: 0, y: 0 }
   },
-  //mode: 'history',
   routes: [
     {
       path: '',
@@ -29,7 +29,13 @@ export default new Router({
           name:'HomePage',
           component:() => import('@/page/home/homePage'),
           meta: { title: '首页'},
-        }
+        },
+        {
+          path:'/market',
+          name:'Market',
+          component:() => import('@/page/market/market'),
+          meta: { title: 'market'},
+        },       
       ]
     },
     ...consoleRouter
