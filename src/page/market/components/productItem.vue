@@ -4,14 +4,14 @@
 - github:https://github.com/Mirror198829
 -->
 <template>
-  <div class="productItem" :style="{borderColor:prtColor}">
-    <div class="productTag" :style="{borderTopColor:prtColor,borderRightColor:prtColor}">
-      <span>热门</span>
+  <div class="productItem" :style="{borderColor:prtObj.color}">
+    <div class="productTag" :style="{borderTopColor:prtObj.color,borderRightColor:prtObj.color}">
+      <span>{{prtObj.tag}}</span>
     </div>
-    <img class="productImg" v-bind:src="require('../../../assets/market/'+prtImg+'.jpg')" style="height:100px">
-    <p class="productName">{{prtTitle}}</p>
-    <p class="productDetail">{{prtDetail}}</p>
-    <p class="productPrice">{{prtPrice}}元/月</p>
+    <img class="productImg" v-bind:src="require('../../../assets/market/'+prtObj.img+'.jpg')" style="height:100px">
+    <p class="productName">{{prtObj.title}}</p>
+    <p class="productDetail">{{prtObj.detail}}</p>
+    <p class="productPrice">{{prtObj.price}}元/<span v-if="prtObj.month > 1">{{prtObj.month}}</span>月</p>
     <div class='productBtn'>立即购买</div>
   </div>
 </template>
@@ -19,22 +19,8 @@
 <script>
 export default {
   props:{
-    prtColor:{
-      required:true
-    },
-    prtPrice:{
-      type:Number,
-      required:true
-    },
-    prtTitle:{
-      type:String,
-      required:true
-    },
-    prtDetail:{
-      type:String,
-      required:true
-    },
-    prtImg:{
+    prtObj:{
+      type:Object,
       required:true
     }
   },
@@ -68,7 +54,7 @@ export default {
   .productDetail{font-size: 12px;color:@font-color;.textOver;.prt;}
   .productBtn{display: inline-block;background-color: @theme-color;padding:5px 25px;color:#fff;.prt}
   .productPrice{font-size:20px;color:#ea402f;.prt}
-  &:hover{ background-color: #fff;box-shadow: 0 0 20px rgba(0,0,0,.2);transform: scale(1.05);z-index:1000;}
+  &:hover{ background-color: #fff;box-shadow: 0 0 20px rgba(0,0,0,.2);transform: scale(1.05);z-index:100;}
   &:hover .productName{color:@theme-color;}
 }
 // screen >= 1200
