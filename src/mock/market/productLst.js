@@ -6,7 +6,8 @@ const product = Mock.mock({
       "title":"@ctitle",
       "color":"@color",
       "price|0-300":0,
-      "detail":"@csentence"
+      "detail":"@csentence",
+      "img|+1":1
     }
   ]
 })

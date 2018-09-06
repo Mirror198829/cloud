@@ -14,6 +14,7 @@
       :prt-price="item.price"
       :prt-title="item.title"
       :prt-detail="item.detail"
+      :prt-img="item.img"
       ></product-item>
     </div>
   </div>

@@ -8,7 +8,7 @@
     <div class="productTag" :style="{borderTopColor:prtColor,borderRightColor:prtColor}">
       <span>热门</span>
     </div>
-    <img class="productImg" src="../../../assets/market/web.jpg">
+    <img class="productImg" v-bind:src="require('../../../assets/market/'+prtImg+'.jpg')" style="height:100px">
     <p class="productName">{{prtTitle}}</p>
     <p class="productDetail">{{prtDetail}}</p>
     <p class="productPrice">{{prtPrice}}元/月</p>
@@ -32,6 +32,9 @@ export default {
     },
     prtDetail:{
       type:String,
+      required:true
+    },
+    prtImg:{
       required:true
     }
   },
