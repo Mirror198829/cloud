@@ -1,10 +1,15 @@
 <!-- 
 - Author:CaoJing
-- Date:2018/9/5
+- Date:2018/9/6
 - github:https://github.com/Mirror198829
 -->
 <template>
   <div>
+      <div class="adWrap">
+        <div class="ad">
+          <img v-for="item in 4" :src="require('../../assets/market/ad'+item+'.png')">
+        </div>
+      </div>
       <div class="serviceWrap">
         <div class="service">
           <div class="serviceL">
@@ -89,6 +94,9 @@ export default {
 <style  scoped lang="less">
 @import '../../less/index.less';
 .blockW{width: 1180px;margin:0 auto;}
+.adWrap{background-color: #fff;padding:20px 0;
+  .ad{display: flex;.blockW;justify-content: space-between;}
+}
 .serviceWrap{background-color: #f5f5f5;padding:30px 0;
   .service{display: flex;.blockW;
     h3{font-weight: 300;font-size:20px;margin-bottom:20px;}
