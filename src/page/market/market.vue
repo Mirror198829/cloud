@@ -5,6 +5,7 @@
 -->
 <template>
   <div>
+      <div class="banner"></div>
       <div class="adWrap">
         <div class="ad">
           <img v-for="item in 4" :src="require('../../assets/market/ad'+item+'.png')">
@@ -94,6 +95,7 @@ export default {
 <style  scoped lang="less">
 @import '../../less/index.less';
 .blockW{width: 1180px;margin:0 auto;}
+.banner{background:url('../../assets/market/banner.jpg');width:100%;height:400px;background-position:center center;background-repeat: no-repeat;background-size:cover;}
 .adWrap{background-color: #fff;padding:20px 0;
   .ad{display: flex;.blockW;justify-content: space-between;}
 }
