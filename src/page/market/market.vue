@@ -4,7 +4,7 @@
 - github:https://github.com/Mirror198829
 -->
 <template>
-  <div>
+  <div class="market">
       <div class="banner"></div>
       <div class="adWrap">
         <div class="ad">
@@ -94,8 +94,10 @@ export default {
 
 <style  scoped lang="less">
 @import '../../less/index.less';
-.blockW{width: 1180px;margin:0 auto;}
-.banner{background:url('../../assets/market/banner.jpg');width:100%;height:400px;background-position:center center;background-repeat: no-repeat;background-size:cover;}
+@min-width:1180px;
+.blockW{width: @min-width;margin:0 auto;}
+.market{min-width: 1200px;}
+.banner{background:url('../../assets/market/banner.jpg');width:100%;height:400px;background-position:center center;background-repeat: no-repeat;background-size:cover;width: 100%}
 .adWrap{background-color: #fff;padding:20px 0;
   .ad{display: flex;.blockW;justify-content: space-between;}
 }
