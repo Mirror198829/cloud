@@ -83,7 +83,6 @@ export default {
     productItem
   },
   methods:{
-
   },
   mounted(){
     this.productLst = productLst.data

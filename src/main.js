@@ -22,6 +22,13 @@ Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.component('chart', ECharts)
 
+import VueLazyLoad from 'vue-lazyload'
+Vue.use(VueLazyLoad,{
+    error:'../static/error.jpg',
+    loading:'../static/loading.png',
+    listenEvents: [ 'scroll', 'mousewheel' ]
+})
+
 axios.interceptors.request.use(
 	config => {
 	    NProgress.start()

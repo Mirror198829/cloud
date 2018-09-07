@@ -8,7 +8,9 @@
      <div class="block">
       <el-carousel trigger="click" :height="bannerH +'px'">
         <el-carousel-item v-for="(item,index) in bannerImgLst" :key="index">
-          <img :src="'https://mirror198829.github.io/static/cloud/'+item" class="bannerImg"/>
+          <img 
+          v-lazy="'https://mirror198829.github.io/static/cloud/'+item" 
+          class="bannerImg"/>
         </el-carousel-item>
       </el-carousel>
       <div class="cloudIndexBoxWrap">
@@ -85,6 +87,7 @@ export default {
 
 <style scoped lang="less">
 @import '../../less/index.less';
+.lazyImg{width: 400px;height:400px;display: block}
 #homePage{background-color:#fff}
 .bannerImg{width:100%;height:100%;}
 .cloudIndexBox{max-width:@max-pcW;width:@max-pcW;margin:0 auto;color:#ccc;}
